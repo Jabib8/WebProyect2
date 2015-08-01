@@ -37,25 +37,25 @@
   <form class="col s12">
     <div class="row center-align">
       <div class="input-field col s12">
-        <input  id="first_name" type="text" class="validate">
+        <input  id="first_name_client" type="text" class="validate">
         <label for="first_name">First Name</label>
         </div>
     </div>
    <div class="row center-align">
       <div class="input-field col s12">
-        <input  id="last_name" type="text" class="validate">
+        <input  id="last_name_client" type="text" class="validate">
         <label for="first_name">Last Name</label>
         </div>
     </div>
     <div class="row center-align">
       <div class="input-field col s12">
-        <input  id="id" type="text" class="validate">
+        <input  id="id_client" type="text" class="validate">
         <label for="first_name">ID</label>
         </div>
     </div>
     <div class="row center-align">
       <div class="input-field col s12">
-        <input  id="phone" type="text" class="validate">
+        <input  id="phone_client" type="text" class="validate">
         <label for="first_name">Telephone</label>
         </div>
     </div>
@@ -64,11 +64,13 @@
   </form>
 </div>
 
-<a class="divguardar" href="client_administration.html">Cancel</a>
-<a style="margin-left: 20%;" class="waves-effect waves-light btn">SAVE</a>
+<a class="divguardar" href="client_administration.html" >Cancel</a>
+<a style="margin-left: 20%;" class="waves-effect waves-light btn" onclick="Util.agregarClient();">SAVE</a>
 </fieldset>
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
+<script src="js/application.js" type="text/javascript"></script>
 </body> 
 <footer></footer> 
 </html> 
