@@ -57,9 +57,14 @@ llenartabla: function()
 			id.innerHTML = object2.clients[i].id;
 			fullname.innerHTML = object2.clients[i].firstName+" "+object2.clients[i].lastName;
 			phone.innerHTML = object2.clients[i].phone;
-			actions.innerHTML="no se jj :-("
+			actions.innerHTML="no se jj :-(";
 				return false;
 			};
 
 		}
 	};
+//ESO GO GO DIEGASO
+ $('.datepicker').pickadate({//jquery para el datepicker
+    selectMonths: true,
+    selectYears: 15
+  });
