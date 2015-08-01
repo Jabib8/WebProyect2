@@ -5,6 +5,7 @@
  <!-- External CSS -->
  <link rel="stylesheet" href="./template.css" type="text/css" media="all" />
  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
  <meta charset="utf-8">
  <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
@@ -12,60 +13,62 @@
 
 </head> 
 <body> 
- <div class="row">
-   <div class="col s1.5"> <a href="clients.html" class="waves-effect waves-light btn">CLIENTS</a></div>
-   <div class="col s1.5"><a href="chambas.html" class="waves-effect waves-light btn">CHAMBAS</a></div>
-   <div class="col s1.5"><a  href="invoices.html" class="waves-effect waves-light btn">INVOICES</a></div>
-   <div class="col s1.5"><a  href="users.html" class="waves-effect waves-light btn">User</a></div>
-   <div class="col s4"><span class="labelmenu">Usuario</span></div>
-   <div class="col s2"><img class="imgmenu circle responsive-img" src="images\user.png"></div>
- </div>
+ <nav>
+   <div class="nav-wrapper">
+     <a href="dashboard.html" class="brand-logo right">Home</a>
+     <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li><a href="clients.html">Client</a></li>
+      <li><a href="chambas.html">Chambas</a></li> 
+      <li><a href="invoices.html">Invoices</a></li>
+      <li><a href="user.html">User<i class="material-icons right">person_pin</i> </a></li>
+    </ul>
+  </div>
+</nav>
+  <div class="divSubtitulo">
 
- <div class="divSubtitulo">
-
-  <img class="divimg" src="images\user.png" /> 
-  <span class="subtitulo flow-text">
-   EDIT CLIENT
- </span>
- <a href="new_client.html"><button  class="divbtn waves-effect waves-light btn">
-  NEW CLIENT
-</button></a>
+    <img class="divimg" src="images\user.png" /> 
+    <span class="subtitulo flow-text">
+     EDIT CLIENT
+   </span>
+   <a href="new_client.html"><button  class="divbtn waves-effect waves-light btn">
+    NEW CLIENT
+  </button></a>
 </div>
 
 <fieldset class="flow-text" style=" margin-left: 20%;margin-right: 20%; border: none;">
-<div class="row">
-  <form class="col s12">
-    <div class="row center-align">
-      <div class="input-field col s12">
-        <input  id="first_name" type="text" class="validate">
-        <label for="first_name">First Name</label>
+  <div class="row">
+    <form class="col s12">
+      <div class="row center-align">
+        <div class="input-field col s12">
+          <input  id="first_name" type="text" class="validate">
+          <label for="first_name">First Name</label>
         </div>
-    </div>
-   <div class="row center-align">
-      <div class="input-field col s12">
-        <input  id="last_name" type="text" class="validate">
-        <label for="first_name">Last Name</label>
+      </div>
+      <div class="row center-align">
+        <div class="input-field col s12">
+          <input  id="last_name" type="text" class="validate">
+          <label for="first_name">Last Name</label>
         </div>
-    </div>
-    <div class="row center-align">
-      <div class="input-field col s12">
-        <input  id="id" type="text" class="validate">
-        <label for="first_name">ID</label>
+      </div>
+      <div class="row center-align">
+        <div class="input-field col s12">
+          <input  id="id" type="text" class="validate">
+          <label for="first_name">ID</label>
         </div>
-    </div>
-    <div class="row center-align">
-      <div class="input-field col s12">
-        <input  id="phone" type="text" class="validate">
-        <label for="first_name">Telephone</label>
+      </div>
+      <div class="row center-align">
+        <div class="input-field col s12">
+          <input  id="phone" type="text" class="validate">
+          <label for="first_name">Telephone</label>
         </div>
-    </div>
-    
+      </div>
 
-  </form>
-</div>
 
-<a class="divguardar" href="client_administration.html">Cancel</a>
-<a style="margin-left: 20%;" class="waves-effect waves-light btn">SAVE</a>
+    </form>
+  </div>
+
+  <a class="divguardar" href="client_administration.html">Cancel</a>
+  <a style="margin-left: 20%;" class="waves-effect waves-light btn">SAVE</a>
 </fieldset>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>

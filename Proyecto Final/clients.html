@@ -6,47 +6,41 @@
  <meta charset="utf-8">
  <link rel="stylesheet" href="./template.css" type="text/css" media="all" />
  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
  <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
 </head> 
 
 <body onload="Util.llenartabla()"> 
-   <div class="row">
-      <div class="col s1.5"> <a href="clients.html" class="waves-effect waves-light btn">CLIENTS</a></div>
-      <div class="col s1.5"><a href="chambas.html" class="waves-effect waves-light btn">CHAMBAS</a></div>
-      <div class="col s1.5"><a  href="invoices.html" class="waves-effect waves-light btn">INVOICES</a></div>
-       <div class="col s1.5"><a  href="users.html" class="waves-effect waves-light btn">User</a></div>
-      <div class="col s4"><span class="labelmenu">Usuario</span></div>
-      <div class="col s2"><img class="imgmenu circle responsive-img" src="images\user.png"></div>
-    </div>
+  <nav>
+   <div class="nav-wrapper">
+     <a href="dashboard.html" class="brand-logo right">Home</a>
+     <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li><a href="clients.html">Client</a></li>
+      <li><a href="chambas.html">Chambas</a></li> 
+      <li><a href="invoices.html">Invoices</a></li>
+      <li><a href="user.html">User<i class="material-icons right">person_pin</i> </a></li>
+    </ul>
+  </div>
+</nav>
 
-<div class="divSubtitulo">
+  <div class="divSubtitulo" >
 
-  <img class="divimg" src="images\user.png" /> 
-  <span class="subtitulo flow-text">
-   CLIENTS
- </span>
- <a href="new_client.html"><button  class="divbtn waves-effect waves-light btn">
-  NEW CLIENT
-</button></a>
+    <img class="divimg" src="images\user.png" /> 
+    <span class="subtitulo flow-text">
+     CLIENTS
+   </span>
+   <a href="new_client.html"><button  class="divbtn waves-effect waves-light btn">
+    NEW CLIENT
+  </button></a>
 
 </div>
 
-<table id="tableclient"  class="centered hoverable striped bordered" >
-  <tr >
+<table id="tableclient"  class="centered hoverable striped bordered"  >
+  <tr style="background-color: #FF8C00">
     <td ><strong>ID</strong></td>
     <td ><strong>FULL NAME</strong></td>
     <td ><strong >TELEPHONE</strong></td>
     <td ><strong >ACTIONS</strong></td>
-  </tr>
-
-  <tr >
-    <td >2-566-623</td>
-    <td >Yamma Luna</td>
-    <td >88888888</td>
-    <td>
-      <a  href="edit_clientl.html"><img  id="editar" src="images\edit.png"/> </a>
-      <a  href="delete_clienteI.html"><img   id = "delete" src="images\delete.png"/> </a>
-    </td>
   </tr>
 </table>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

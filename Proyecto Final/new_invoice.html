@@ -7,33 +7,23 @@
  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
  <meta charset="utf-8">
- <!--
 
 
 </head> 
 <body> 
-
+</body>
 <nav>
- <div class="nav-wrapper">
-   <a href="dashboard.html" class="brand-logo right">Home</a>
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="clients.html">Client</a></li>
-        <li><a href="chambas.html">Chambas</a></li> 
-        <li><a href="invoices.html">Invoices</a></li>
-        <li><a href="users.html">User<i class="material-icons right">person_pin</i> </a></li>
-
-      </ul>
- </div>
+   <div class="nav-wrapper">
+     <a href="dashboard.html" class="brand-logo right">Home</a>
+     <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li><a href="clients.html">Client</a></li>
+      <li><a href="chambas.html">Chambas</a></li> 
+      <li><a href="invoices.html">Invoices</a></li>
+      <li><a href="user.html">User<i class="material-icons right">person_pin</i> </a></li>
+    </ul>
+  </div>
 </nav>
--->
-<div class="row">
-      <div class="col s1.5"> <a href="clients.html" class="waves-effect waves-light btn">CLIENTS</a></div>
-      <div class="col s1.5"><a href="chambas.html" class="waves-effect waves-light btn">CHAMBAS</a></div>
-      <div class="col s1.5"><a  href="invoices.html" class="waves-effect waves-light btn">INVOICES</a></div>
-       <div class="col s1.5"><a  href="users.html" class="waves-effect waves-light btn">User</a></div>
-      <div class="col s4"><span class="labelmenu">Usuario</span></div>
-      <div class="col s2"><img class="imgmenu circle responsive-img" src="images\user.png"></div>
-    </div>
+
  <div class="divSubtitulo">
 
   <img class="divimg" src="images\invoice.png" /> 
@@ -50,19 +40,19 @@
   <form class="col s12">
     <div class="row center-align">
       <div class="input-field col s12">
-        <input  id="first_name" type="text" class="validate">
+        <input  id="client_invoice" type="text" class="validate">
         <label for="first_name">Client</label>
         </div>
     </div>
    <div class="row center-align">
       <div class="input-field col s12">
-         <textarea id="textarea1" class="materialize-textarea"></textarea>
+         <textarea id="description_invoice" class="materialize-textarea"></textarea>
       <label for="textarea1">Description</label>
         </div>
     </div>
     <div class="row center-align">
       <div class="input-field col s12">
-        <input type="number" class="number">
+        <input id="mount_invoice" type="number" class="number">
         <label for="date">Mount</label>
         </div>
     </div>
@@ -73,11 +63,11 @@
 </div>
 
 <a class="divguardar" href="invoices.html">Cancel</a>
-<a style="margin-left: 20%;" class="waves-effect waves-light btn">SAVE</a>
+<a style="margin-left: 20%;" class="waves-effect waves-light btn" onclick="Invoice.agregarInvoice();">SAVE</a>
 </fieldset>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
-<script type="text/javascript" src="js/application.js"></script>
+<script src="js/invoices.js" type="text/javascript"></script>
 
 <footer class="page-footer">
           <div class="container">

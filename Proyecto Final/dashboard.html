@@ -7,21 +7,24 @@
 	<title>dashboard</title>
 	<!-- External CSS -->
 	<link rel="stylesheet" href="./template.css" type="text/css" media="all" />
-
 	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head> 
 <body> 
-<div class="row">
-      <div class="col s1.5"> <a href="clients.html" class="waves-effect waves-light btn">CLIENTS</a></div>
-      <div class="col s1.5"><a href="chambas.html" class="waves-effect waves-light btn">CHAMBAS</a></div>
-      <div class="col s1.5"><a  href="invoices.html" class="waves-effect waves-light btn">INVOICES</a></div>
-       <div class="col s1.5"><a  href="users.html" class="waves-effect waves-light btn">User</a></div>
-      <div class="col s4"><span class="labelmenu">Usuario</span></div>
-      <div class="col s2"><img class="imgmenu circle responsive-img" src="images\user.png"></div>
-    </div>
+<nav>
+   <div class="nav-wrapper">
+     <a href="dashboard.html" class="brand-logo right">Home</a>
+     <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li><a href="clients.html">Client</a></li>
+      <li><a href="chambas.html">Chambas</a></li> 
+      <li><a href="invoices.html">Invoices</a></li>
+      <li><a href="user.html">User<i class="material-icons right">person_pin</i> </a></li>
+    </ul>
+  </div>
+</nav>
 
-	<h1  style="color: #FF8C00" class="flow-text"> WELCOME Diego G</font></h1>
+	<h1  style="color: #FF8C00" class="flow-text"> WELCOME Usuario</font></h1>
 	<a href="client_administration.html"><img class="imgprincipal responsive-img" src="images\user.png" id="imgclient"></a>
 
 	<a href="chambas.html"><img class="imgprincipal responsive-img" src="images\chambas.jpg" id="imgclient"/></a>

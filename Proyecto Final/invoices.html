@@ -7,69 +7,46 @@
  <link rel="stylesheet" href="./template.css" type="text/css" media="all" />
  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
- <!--
+
 </head> 
 
-<body> 
+<body onload="Invoice.llenarInvoice()"> 
   <nav>
- <div class=" esponsive nav-wrapper ">
-   <a href="dashboard.html" class="brand-logo right">Home</a>
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="clients.html">Client</a></li>
-        <li><a href="chambas.html">Chambas</a></li>
-        <li><a href="invoices.html">Invoices</a></li>
-        <li><a href="users.html">User<i class="material-icons right">person_pin</i> </a></li>
-
-      </ul>
- </div>
+   <div class="nav-wrapper">
+     <a href="dashboard.html" class="brand-logo right">Home</a>
+     <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li><a href="clients.html">Client</a></li>
+      <li><a href="chambas.html">Chambas</a></li> 
+      <li><a href="invoices.html">Invoices</a></li>
+      <li><a href="user.html">User<i class="material-icons right">person_pin</i> </a></li>
+    </ul>
+  </div>
 </nav>
--->
-<div class="row">
-      <div class="col s1.5"> <a href="clients.html" class="waves-effect waves-light btn">CLIENTS</a></div>
-      <div class="col s1.5"><a href="chambas.html" class="waves-effect waves-light btn">CHAMBAS</a></div>
-      <div class="col s1.5"><a  href="invoices.html" class="waves-effect waves-light btn">INVOICES</a></div>
-       <div class="col s1.5"><a  href="users.html" class="waves-effect waves-light btn">User</a></div>
-      <div class="col s4"><span class="labelmenu">Usuario</span></div>
-      <div class="col s2"><img class="imgmenu circle responsive-img" src="images\user.png"></div>
-    </div>
-<div id="divSubtitulo" class="divSubtitulo">
+  <div id="divSubtitulo" class="divSubtitulo">
 
-  <img class="divimg" src="images\invoice.png" /> 
-  <span id="invoSub" class="subtitulo flow-text">
- Invoices
- </span>
- <a href="new_invoice.html"><button  class="divbtn waves-effect waves-light btn">
-  New Invoice
-</button></a>
+    <img class="divimg" src="images\invoice.png" /> 
+    <span id="invoSub" class="subtitulo flow-text">
+     Invoices
+   </span>
+   <a href="new_invoice.html"><button  class="divbtn waves-effect waves-light btn">
+    New Invoice
+  </button></a>
 
 </div>
 
-<table  class="esponsive-table" >
+<table  id="table_invoices"  class="centered hoverable striped bordered" >
   <tr style="background-color: #FF8C00" >
     <td ><strong>INVOICE #</strong></td>
     <td ><strong>CLIENT</strong></td>
     <td ><strong >DESCRIPTION</strong></td>
     <td ><strong >AMOUNT</strong></td>
     <td ><strong >ACTIONS</strong></td>
-
-
   </tr>
-
-  <tr style="background-color: #FFFFFF">
-    <td >2</td>
-    <td >Diegaso</td>
-    <td >Repair</td>
-    <td >10000</td>
-    <td>
-      <a  href="edit_clientl.html"><img  id="editar" src="images\edit.png"/> </a>
-      <a  href="delete_clienteI.html"><img   id = "delete" src="images\delete.png"/> </a>
-    </td>
-  </tr>
-
 
 </table>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
+<script src="js/invoices.js" type="text/javascript"></script>
 </body> 
 <footer></footer> 
 </html> 

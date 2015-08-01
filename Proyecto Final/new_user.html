@@ -1,17 +1,17 @@
 <!DOCTYPE HTML> 
 <html lang="es"> 
 <head>
- <title>new_client</title>
+ <title>New User</title>
  <!-- External CSS -->
  <link rel="stylesheet" href="./template.css" type="text/css" media="all" />
  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
  <meta charset="utf-8">
-
 </head> 
 <body> 
+
 </body>
- <nav>
+<nav>
    <div class="nav-wrapper">
      <a href="dashboard.html" class="brand-logo right">Home</a>
      <ul id="nav-mobile" class="left hide-on-med-and-down">
@@ -24,12 +24,12 @@
 </nav>
 <div class="divSubtitulo">
 
-  <img class="divimg" src="images\chambas.jpg" /> 
+  <img class="divimg" src="images\user.png" /> 
   <span class="subtitulo flow-text">
-   CHAMBAS
+   USER
  </span>
- <a href="new_chamba.html"><button  class="divbtn waves-effect waves-light btn">
-  NEW CHAMBA
+ <a href="new_user.html"><button  class="divbtn waves-effect waves-light btn">
+  NEW USER
 </button></a>
 </div>
 
@@ -38,45 +38,39 @@
     <form class="col s12">
       <div class="row center-align">
         <div class="input-field col s12">
-          <input  id="id_chamba" type="text" class="validate">
-          <label for="first_name">ID</label>
+          <input  id="user_name" type="text" class="validate">
+          <label for="user_name">Full name</label>
         </div>
       </div>
       <div class="row center-align">
         <div class="input-field col s12">
-          <input  id="client_chamba" type="text" class="validate">
-          <label for="first_name">Client</label>
-        </div>
-      </div>
-      <div class="row center-align">
-        <div class="input-field col s12">
-         <textarea id="descripcion_chamba" class="materialize-textarea"></textarea>
-         <label for="textarea1">Description</label>
+         <input  id="name_user" type="text" class="validate">
+         <label for="name_user">User Name</label>
        </div>
      </div>
      <div class="row center-align">
       <div class="input-field col s12">
-        <input id="date_chamba" type="date" class="datepicker">
-        <label for="date">Date</label>
-      </div>
-    </div>
-    <div class="row center-align">
-      <div class="input-field col s12">
-        <textarea id="notes_chamba" class="materialize-textarea"></textarea>
-        <label for="textarea2">Notes</label>
-      </div>
-    </div>
-    
+       <input  id="pasword" type="password" class="validate">
+       <label for="pasword">Password</label>
+     </div>
+   </div>
+   <div class="row center-align">
+    <div class="input-field col s12">
+     <input  id="pasword_repeat" type="password" class="validate">
+     <label for="pasword_repeat">Repeat Password</label>
+   </div>
+ </div>
+ 
 
-  </form>
+</form>
 </div>
 
-<a class="divguardar" href="chambas.html">Cancel</a>
-<a style="margin-left: 20%;" class="waves-effect waves-light btn" onclick="Chamba.agregarChamba();">SAVE</a>
+<a class="divguardar" href="invoices.html">Cancel</a>
+<a style="margin-left: 20%;" class="waves-effect waves-light btn" onclick="Usuario.agregarUser();">SAVE</a>
 </fieldset>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
-<script src="js/chambas.js" type="text/javascript"></script>
+<script src="js/user.js" type="text/javascript"></script>
 
 <footer class="page-footer">
   <div class="container">
@@ -89,7 +83,7 @@
         <h5 class="white-text">Bye?</h5>
         <ul>
           <li><a class="grey-text text-lighten-3" href="login.html">Exit</a></li>
-
+          
         </ul>
       </div>
     </div>
