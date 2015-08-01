@@ -1,0 +1,113 @@
+<!DOCTYPE HTML> 
+<html lang="es"> 
+<head>
+ <title>new_invoice</title>
+ <!-- External CSS -->
+ <link rel="stylesheet" href="./template.css" type="text/css" media="all" />
+
+ <meta charset="utf-8">
+ <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+
+ 
+</head> 
+<body> 
+  <section id="menu">
+    <a style="text-decoration:none" href="dashboard.html"><img id="home" src="C:\Users\Diego G\Documents\GitHub\Proyecto\images\home.png"></a>
+    <span id="labelhome">HOME</span>
+    <a style="text-decoration:none" href="client_administration.html"><button id="botonclien"style="background-color: #FF8C00" >
+      CLIENTS
+    </button ></a>
+
+    <a style="text-decoration:none" href="chambas.html"><button id="botoninicio", style="background-color: #FF8C00">
+      CHAMBAS
+    </button></a>
+
+    <a style="text-decoration:none" href="invoices.html"><button id="botonchamba", style="background-color: #FFFFFF">
+      INVOICES
+    </button> </a>
+
+    <span id="li"> Diego G</span>
+    <a style="text-decoration:none" href="login.html"><img class="redondeado" id="imgmenu" src="C:\Users\Diego G\Documents\GitHub\Proyecto\images\user.png" id="img"/></a>
+    
+  </section>  	 
+  <img src="C:\Users\Diego G\Documents\GitHub\Proyecto\images\usuario.png" id="imgclientes"/> 
+  <span id="client">
+   NEW INVOICE
+ </span>
+ <a style="text-decoration:none" href="new_invoices.html">
+  <button id="NewClient">
+    NEW INVOICE
+  </button>
+</a>
+</section>
+
+<form>
+  <p id="labelperson">CLIENT</p>
+  <input placeholder="CLIENT" id= "newperson"  type="text" list="provincias" />
+  <datalist values="Yamma Luna" id="provincias">
+    
+   <option value="Yamma Luna">
+    <option value="Bladimir Arroyo">
+      <option value="Diego Garcia">
+      </datalist>
+    </form>
+    <p id="labelperson">DATE</p>
+    <input id= "newperson" type="date" name="fecha">
+    <p id="labelperson">DESCRIPION</p>
+    <INPUT  id= "newperson";TYPE="textarea" SIZE="25" placeholder="DESCRIPTION">
+      <p id="labelperson">AMOUNT </p>
+      <script type="text/javascript">
+      function GetKey(e) {
+       var keynum;
+       if(window.event) { keynum = e.keyCode; }
+       else if(e.which) { keynum = e.which; }
+       return keynum;
+     }
+
+     function GetChar(ev) {
+       var ev = ev || window.event;
+       var chr = ev.charCode || ev.keyCode;
+       return String.fromCharCode(chr);
+     }
+
+     function ValidarTecla(ev) {
+       var key = GetKey(ev);
+       if (key > 63) {
+        var chr = GetChar(ev);
+        if (/[\d|\.|,]/.test(chr)) {
+         return true;
+       } else {
+         return false;
+       }
+     } else {
+      return true;
+    }
+  }
+
+  function ValidarTexto(ele) {
+   var valor = ele.value;
+   if (/^\d[,|\.]\d*/.test(valor) == false) {
+   } else {
+    if ((parseFloat(valor) < 0) || (parseFloat(valor) > 5)) {
+    }
+  }
+}
+</script>
+</head>
+<body>
+  <input placeholder="AMOUNT" id= "newperson" type="text"  onKeypress="return ValidarTecla(event);" onBlur="ValidarTexto(this);" />
+
+
+  <section id="menunewclient">
+
+   <a id= "link" href="invoices.html">Cancel</a>
+   <a style="text-decoration:none" href="guardado_invoice.html">
+    <button id="btnnewclietn" >
+      SAVE
+    </button>
+  </a>
+</section>
+
+</body> 
+<footer></footer> 
+</html> 

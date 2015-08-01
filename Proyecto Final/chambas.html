@@ -1,0 +1,64 @@
+<!DOCTYPE HTML> 
+<html lang="es"> 
+<head>
+ <title>Chambas</title>
+ <!-- External CSS -->
+ <meta charset="utf-8">
+ <link rel="stylesheet" href="./template.css" type="text/css" media="all" />
+ <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+ <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+</head> 
+
+<body> 
+   <div class="row">
+      <div class="col s1.5"> <a class="waves-effect waves-light btn">CLIENTS</a></div>
+      <div class="col s1.5"><a class="waves-effect waves-light btn">CHAMBAS</a></div>
+      <div class="col s1.5"><a class="waves-effect waves-light btn">INVOICES</a></div>
+       <div class="col s1.5"><a class="waves-effect waves-light btn">User</a></div>
+      <div class="col s4"><span class="labelmenu">Usuario</span></div>
+      <div class="col s2"><img class="imgmenu circle responsive-img" src="images\user.png"></div>
+    </div>
+
+<div id="divSubtitulo" class="divSubtitulo">
+
+  <img class="divimg" src="images\chambas.jpg" /> 
+  <span id="chambaSub" class="subtitulo flow-text">
+  Chambas
+ </span>
+ <a href="new_client.html"><button  class="divbtn waves-effect waves-light btn">
+  New Chamba
+</button></a>
+
+</div>
+
+<table  class="esponsive-table" >
+  <tr style="background-color: #FF8C00" >
+    <td ><strong>ID</strong></td>
+    <td ><strong>CLIENT</strong></td>
+    <td ><strong >DESCRIPTION</strong></td>
+    <td ><strong >DATE</strong></td>
+    <td ><strong >NOTES</strong></td>
+    <td ><strong >ACTIONS</strong></td>
+
+
+  </tr>
+
+  <tr style="background-color: #FFFFFF">
+    <td >2-566-623</td>
+    <td >Yamma Luna</td>
+    <td >Repair</td>
+    <td >12/12/12</td>
+    <td >Excelent Job</td>
+    <td>
+      <a  href="edit_clientl.html"><img  id="editar" src="images\edit.png"/> </a>
+      <a  href="delete_clienteI.html"><img   id = "delete" src="images\delete.png"/> </a>
+    </td>
+  </tr>
+
+
+</table>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+</body> 
+<footer></footer> 
+</html> 
