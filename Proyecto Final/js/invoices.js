@@ -1,3 +1,4 @@
+
 var tex ;
 var Invoice = Invoice || {
 	agregarInvoice: function()
@@ -21,61 +22,119 @@ var Invoice = Invoice || {
 		//lo guarda en local storage
 		localStorage.setItem('inv', JSON.stringify(o));
 	},
-	deleteClient: function()
+	deleteInvoice: function()
 	{	
-
-		//variable para leer lo del local storage
-		//var object2 = JSON.parse(localStorage.getItem('Ul'));
-		//ciclo para imprimir todo lo guardado
-		//for (var i = 0; i < object2.clients.length; i++) {
-		//	alert(object2.clients[i].firstName + " " + object2.clients[i].lastName);
-		//elimina un objeto
-		//delete object2.clients[i];
-		//modificar un elemento
-		//object2.clients[i].lastName = "Fonseca";
-		//alert(object2.employees[i].firstName + " " + object2.employees[i].lastName);	
+		var fila = parseInt(localStorage.getItem('fila_inv'));
+		var numero=0;
+		var object2 = JSON.parse(localStorage.getItem('inv'));
+		for (var i = 0; i < object2.Invoices.length; i++) {
+			if(object2.Invoices[i]!=null)
+			{
+				if(numero==fila)
+				{
+					delete object2.Invoices[i];  
+					localStorage.setItem('inv', JSON.stringify(object2));  
+				}
+				numero++;
+			}				
+		};
 
 	},
-	updateClient: function()
-	{	
-
-		//variable para leer lo del local storage
-		var object2 = JSON.parse(localStorage.getItem('Ul'));
-		//ciclo para imprimir todo lo guardado
-		for (var i = 0; i < object2.clients.length; i++) {
-		//modificar un elemento
-		object2.clients[i].lastName = "Fonseca";
-		//alert(object2.employees[i].firstName + " " + object2.employees[i].lastName);
-	};
-
-},
-llenarInvoice: function()
-{
-	if (localStorage.getItem('inv')==null || localStorage.getItem('inv')=="") 
+	vereliminar: function()
 	{
-		alert("No hay elementos en esta tabla para mostrar.");
-	}
-	else
-	{
+		alert('aqui');
+		var fila = parseInt(localStorage.getItem('fila_inv'));
+		var numero=0;
 		var object2 = JSON.parse(localStorage.getItem('inv'));
-	//alert(object2.Invoices.length+"  cantida filas");
-		//ciclo para imprimir todo lo guardado
-		for (var i = 0; i < object2.Invoices.length; i++) {
-			var tbl = document.getElementById('table_invoices');
-			var lastRow = tbl.rows.length;
-			var row = tbl.insertRow(lastRow);
-			var id = row.insertCell(0);
-			var client = row.insertCell(1);
-			var description = row.insertCell(2);
-			var mount = row.insertCell(3);
-			var actions = row.insertCell(4);
-			id.innerHTML = object2.Invoices[i].id;
-			client.innerHTML = object2.Invoices[i].client;
-			description.innerHTML= object2.Invoices[i].descript;
-			mount.innerHTML= object2.Invoices[i].mount;
-			actions.innerHTML="<a  href='edit_client.html'><img  id='editar' src='edit.png'/> </a> <a  href='delete_client.html'><img  id='editar' src='delete.png'/> </a>";
-			};
-		}
 
-	}
-};
+		for (var i = 0; i < object2.Invoices.length; i++) {
+			if(object2.Invoices[i]!=null)
+			{
+
+				if(numero==fila)
+				{
+					alert('ver elemento eliminar:   '+bject2.Invoices[i].client);
+					document.getElementById('client_delete').value= object2.Invoices[i].client; 
+				}
+				numero++;
+			}				
+		};
+	},
+	updateInvoice: function()
+	{
+		alert('Cambiaremos datos');
+		var fila = parseInt(localStorage.getItem('fila_inv'));
+		var numero=0;
+		var object2 = JSON.parse(localStorage.getItem('inv'));
+		for (var i = 0; i < object2.Invoices.length; i++) {
+			if(object2.Invoices[i]!=null)
+			{
+				if(numero==fila)
+				{	
+					alert('numero '+fila+'  ciclo  '+numero);
+						//modificar un elemento		                
+						object2.Invoices[i].client=document.getElementById('first_name').value;
+						object2.Invoices[i].descript=document.getElementById('description_invoice').value;
+						object2.Invoices[i].mount=document.getElementById('mount_invoice').value;
+						localStorage.setItem('inv', JSON.stringify(object2));  
+					}
+					numero++;
+				}				
+			};
+		},
+		fila: function(x){
+			localStorage.setItem('fila_inv', x);
+		},
+		llenarUpdate: function()
+		{
+			var fila = parseInt(localStorage.getItem('fila_inv'));
+			var numero=0;
+			var object2 = JSON.parse(localStorage.getItem('inv'));
+			for (var i = 0; i < object2.Invoices.length; i++) {
+				if(object2.Invoices[i]!=null)
+				{
+					if(numero==fila)
+					{
+						alert(object2.Invoices[i].client);
+						document.getElementById('first_name').value=object2.Invoices[i].client;
+						document.getElementById('description_invoice').value=object2.Invoices[i].descript;
+						document.getElementById('mount_invoice').value=object2.Invoices[i].mount;
+					}
+					numero++;
+				}				
+			};
+		},
+		llenarInvoice: function()
+		{
+			if (localStorage.getItem('inv')==null || localStorage.getItem('inv')=="") 
+			{
+				alert("No hay elementos en esta tabla para mostrar.");
+				 Materialize.toast('No hay elementos en esta tabla!', 4000, 'rounded');
+			}
+			else
+			{
+				var object2 = JSON.parse(localStorage.getItem('inv'));
+				var numfila=0;
+				for (var i = 0; i < object2.Invoices.length; i++) {
+					if(object2.Invoices[i]!=null)
+					{
+						var tbl = document.getElementById('table_invoices');
+						var lastRow = tbl.rows.length;
+						var row = tbl.insertRow(lastRow);
+						var id = row.insertCell(0);
+						var client = row.insertCell(1);
+						var description = row.insertCell(2);
+						var mount = row.insertCell(3);
+						var actions = row.insertCell(4);
+						id.innerHTML = i;
+						client.innerHTML = object2.Invoices[i].client;
+						description.innerHTML= object2.Invoices[i].descript;
+						mount.innerHTML= object2.Invoices[i].mount;
+						actions.innerHTML="<a onclick='Invoice.fila("+numfila+");'  href='edit_invoice.html'><img  id='editar' src='edit.png'/> </a> <a onclick='Invoice.fila("+numfila+");' href='delete_invoice.html'><img  src='delete.png'/> </a>";
+						numfila++;
+					}
+				};
+			}
+
+		}
+	};

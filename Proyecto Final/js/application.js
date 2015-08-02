@@ -25,37 +25,78 @@ var Util = Util || {
 	},
 	deleteClient: function()
 	{	
-
-		//variable para leer lo del local storage
-		//var object2 = JSON.parse(localStorage.getItem('Ul'));
-		//ciclo para imprimir todo lo guardado
-		//for (var i = 0; i < object2.clients.length; i++) {
-		//	alert(object2.clients[i].firstName + " " + object2.clients[i].lastName);
-		//elimina un objeto
-		//delete object2.clients[i];
-		//modificar un elemento
-		//object2.clients[i].lastName = "Fonseca";
-		//alert(object2.employees[i].firstName + " " + object2.employees[i].lastName);	
+		var fila = parseInt(localStorage.getItem('fila_cli'));
+		var numero=0;
+		var object2 = JSON.parse(localStorage.getItem('Ul'));
+		for (var i = 0; i < object2.clients.length; i++) {
+			if(object2.clients[i]!=null)
+			{
+				if(numero==fila)
+				{
+					delete object2.clients[i];  
+					localStorage.setItem('Ul', JSON.stringify(object2));  
+				}
+				numero++;
+			}				
+		};
 
 	},
-	updateClient: function()
-	{	
-
-		//variable para leer lo del local storage
+	updateInvoice: function()
+	{
+		var fila = parseInt(localStorage.getItem('fila_cli'));
+		var numero=0;
 		var object2 = JSON.parse(localStorage.getItem('Ul'));
+		for (var i = 0; i < object2.clients.length; i++) {
+			if(object2.clients[i]!=null)
+			{
+				    if(numero==fila)
+				    {	
+						//modificar un elemento	
+						object2.clients[i].firstName=document.getElementById('first_name').value;
+						object2.clients[i].lastName=document.getElementById('last_name').value;
+						object2.clients[i].id=document.getElementById('id').value;
+						object2.clients[i].phone=document.getElementById('phone').value; 
+						localStorage.setItem('Ul', JSON.stringify(object2));
+					}
+					numero++;
+				}				
+			};
+		},
+		fila: function(x){
+			localStorage.setItem('fila_cli', x);
+		},
+		llenarUpdate: function()
+		{
+			var fila = parseInt(localStorage.getItem('fila_cli'));
+			var numero=0;
+			var object2 = JSON.parse(localStorage.getItem('Ul'));
+			for (var i = 0; i < object2.clients.length; i++) {
+				if(object2.clients[i]!=null)
+				{
+					if(numero==fila)
+					{						
+						document.getElementById('first_name').value=object2.clients[i].firstName;
+						document.getElementById('last_name').value=object2.clients[i].lastName;
+						document.getElementById('id').value=object2.clients[i].id;
+						document.getElementById('phone').value=object2.clients[i].phone;
+					}
+					numero++;
+				}				
+			};
+		},
+		llenartabla: function()
+		{
+			if (localStorage.getItem('inv')==null || localStorage.getItem('inv')=="") 
+			{
+				alert("No hay elementos en esta tabla para mostrar.");
+			}
+			else
+			{
+			var numfila=0;
+			var object2 = JSON.parse(localStorage.getItem('Ul'));
 		//ciclo para imprimir todo lo guardado
 		for (var i = 0; i < object2.clients.length; i++) {
-		//modificar un elemento
-		object2.clients[i].lastName = "Fonseca";
-		//alert(object2.employees[i].firstName + " " + object2.employees[i].lastName);
-	};
-
-},
-llenartabla: function()
-{
-	var object2 = JSON.parse(localStorage.getItem('Ul'));
-		//ciclo para imprimir todo lo guardado
-		for (var i = 0; i < object2.clients.length; i++) {
+			if(object2.clients[i]!=null){
 			var tbl = document.getElementById('tableclient');
 			var lastRow = tbl.rows.length;
 			var row = tbl.insertRow(lastRow);
@@ -66,8 +107,11 @@ llenartabla: function()
 			id.innerHTML = object2.clients[i].id;
 			fullname.innerHTML = object2.clients[i].firstName+" "+object2.clients[i].lastName;
 			phone.innerHTML = object2.clients[i].phone;
-			actions.innerHTML="<a  href='edit_client.html'><img  id='editar' src='edit.png'/> </a> <a  href='delete_client.html'><img  id='editar' src='delete.png'/> </a>";
-			};
-
+			actions.innerHTML="<a onclick='Util.fila("+numfila+");'  href='edit_client.html'><img  id='editar' src='edit.png'/> </a> <a onclick='Util.fila("+numfila+");' href='delete_client.html'><img  src='delete.png'/> </a>";
+			numfila++;
 		}
-	};
+		};
+	}
+
+	}
+};

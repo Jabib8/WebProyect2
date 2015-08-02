@@ -21,45 +21,83 @@ var Chamba = Chamba || {
 		//lo guarda en local storage
 		localStorage.setItem('ch', JSON.stringify(ob));
 	},
-	deleteClient: function()
+	deleteChamba: function()
 	{	
-
-		//variable para leer lo del local storage
-		//var object2 = JSON.parse(localStorage.getItem('Ul'));
-		//ciclo para imprimir todo lo guardado
-		//for (var i = 0; i < object2.clients.length; i++) {
-		//	alert(object2.clients[i].firstName + " " + object2.clients[i].lastName);
-		//elimina un objeto
-		//delete object2.clients[i];
-		//modificar un elemento
-		//object2.clients[i].lastName = "Fonseca";
-		//alert(object2.employees[i].firstName + " " + object2.employees[i].lastName);	
+		var fila = parseInt(localStorage.getItem('fila_ch'));
+		var numero=0;
+		var object2 = JSON.parse(localStorage.getItem('ch'));
+		for (var i = 0; i < object2.Chambas.length; i++) {
+			if(object2.Chambas[i]!=null)
+			{
+				if(numero==fila)
+				{
+					delete object2.Chambas[i];  
+					localStorage.setItem('ch', JSON.stringify(object2));
+				}
+				numero++;
+			}				
+		};
 
 	},
-	updateClient: function()
-	{	
-
-		//variable para leer lo del local storage
-		var object2 = JSON.parse(localStorage.getItem('Ul'));
-		//ciclo para imprimir todo lo guardado
-		for (var i = 0; i < object2.clients.length; i++) {
-		//modificar un elemento
-		object2.clients[i].lastName = "Fonseca";
-		//alert(object2.employees[i].firstName + " " + object2.employees[i].lastName);
-	};
-
-},
+	updateChamba: function()
+	{
+		var fila = parseInt(localStorage.getItem('fila_ch'));
+		var numero=0;
+		var object2 = JSON.parse(localStorage.getItem('ch'));
+		for (var i = 0; i < object2.Chambas.length; i++) {
+			if(object2.Chambas[i]!=null)
+			{
+				    if(numero==fila)
+				    {	
+						//modificar un elemento	
+						object2.Chambas[i].id=document.getElementById('id_chamba').value;
+						object2.Chambas[i].client=document.getElementById('client_chamba').value;
+						object2.Chambas[i].descript=document.getElementById('descripcion_chamba').value;
+						object2.Chambas[i].date=document.getElementById('date_chamba').value; 
+						object2.Chambas[i].notes=document.getElementById('notes_chamba').value; 
+						localStorage.setItem('ch', JSON.stringify(object2));
+					}
+					numero++;
+				}				
+			};
+		},
+		fila: function(x){
+			localStorage.setItem('fila_ch', x);
+		},
+		llenarUpdate: function()
+		{
+			var fila = parseInt(localStorage.getItem('fila_ch'));
+			var numero=0;
+			var object2 = JSON.parse(localStorage.getItem('ch'));
+			for (var i = 0; i < object2.Chambas.length; i++) {
+				if(object2.Chambas[i]!=null)
+				{
+					if(numero==fila)
+					{						
+						document.getElementById('id_chamba').value= object2.Chambas[i].id;
+						document.getElementById('client_chamba').value= object2.Chambas[i].client;
+						document.getElementById('descripcion_chamba').value= object2.Chambas[i].descript;
+						document.getElementById('date_chamba').value = object2.Chambas[i].date;
+						document.getElementById('notes_chamba').value= object2.Chambas[i].notes; 
+					}
+					numero++;
+				}				
+			};
+		},
 llenarChamba: function()
 {
 	if (localStorage.getItem('ch')==null || localStorage.getItem('ch')=="") 
 	{
 		alert('No hay chambas guardadas.');
+		 Materialize.toast('No hay Chambas registrados!', 4000, 'rounded');
 	}
 	else
 	{
 		var object2 = JSON.parse(localStorage.getItem('ch'));
+		var numfila=0;
 		//ciclo para imprimir todo lo guardado
 		for (var i = 0; i < object2.Chambas.length; i++) {
+			if(object2.Chambas[i]!=null){
 			var tbl = document.getElementById('table_chamba');
 			var lastRow = tbl.rows.length;
 			var row = tbl.insertRow(lastRow);
@@ -74,7 +112,9 @@ llenarChamba: function()
 			description.innerHTML= object2.Chambas[i].descript;
 			date.innerHTML= object2.Chambas[i].date;
 			notes.innerHTML= object2.Chambas[i].notes;
-			actions.innerHTML="<a  href='edit_client.html'><img  id='editar' src='edit.png'/> </a> <a  href='delete_client.html'><img  id='editar' src='delete.png'/> </a>";
+			actions.innerHTML="<a onclick='Chamba.fila("+numfila+");'  href='edit_chamba.html'><img  id='editar' src='edit.png'/> </a> <a onclick='Chamba.fila("+numfila+");' href='delete_chambas.html'><img  src='delete.png'/> </a>";
+		    numfila++;
+		    }
 			};
 
 		}

@@ -6,6 +6,7 @@
 
 	<title>dashboard</title>
 	<!-- External CSS -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="stylesheet" href="./template.css" type="text/css" media="all" />
 	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -14,8 +15,8 @@
 <body> 
 <nav>
    <div class="nav-wrapper">
-     <a href="dashboard.html" class="brand-logo right">Home</a>
-     <ul id="nav-mobile" class="left hide-on-med-and-down">
+     <!--<a href="dashboard.html" class="brand-logo center">Home</a>-->
+     <ul id="nav-mobile" class="left hide-down">
       <li><a href="clients.html">Client</a></li>
       <li><a href="chambas.html">Chambas</a></li> 
       <li><a href="invoices.html">Invoices</a></li>
@@ -25,12 +26,14 @@
 </nav>
 
 	<h1  style="color: #FF8C00" class="flow-text"> WELCOME Usuario</font></h1>
-	<a href="client_administration.html"><img class="imgprincipal responsive-img" src="images\user.png" id="imgclient"></a>
+	<div class="center">
+	<a href="clients.html"><img class="imgprincipal responsive-img" src="images\user.png" id="imgclient"></a>
 
 	<a href="chambas.html"><img class="imgprincipal responsive-img" src="images\chambas.jpg" id="imgclient"/></a>
 
 	<a href="invoices.html"><img class="imgprincipal responsive-img" src="images\invoice.png" id="imgclient"/> </a>
-
+</div>
+	
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
 </body> 

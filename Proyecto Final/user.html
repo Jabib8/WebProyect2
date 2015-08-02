@@ -11,10 +11,17 @@
 </head> 
 
 <body onload="Usuario.llenarUser()"> 
+<script language="JavaScript">
+
+    function coordenadas(x,y){
+        var mensaje = 'La celda está situada en la columna '+x+' y en la fila '+y;
+        return mensaje;
+    }
+</script>
  <nav>
    <div class="nav-wrapper">
-     <a href="dashboard.html" class="brand-logo right">Home</a>
-     <ul id="nav-mobile" class="left hide-on-med-and-down">
+     <a href="dashboard.html" class="brand-logo center">Home</a>
+     <ul id="nav-mobile" class="left hide-down">
       <li><a href="clients.html">Client</a></li>
       <li><a href="chambas.html">Chambas</a></li> 
       <li><a href="invoices.html">Invoices</a></li>
@@ -33,6 +40,13 @@
   </button></a>
 
 </div>
+<script language="JavaScript">
+
+    function coordenadas(x){
+        var mensaje = 'La celda está situada en la fila '+x;
+        return mensaje;
+    }
+</script>
 
 <table  class="centered hoverable striped bordered" id="table_user">
   <tr style="background-color: #FF8C00" >
@@ -49,8 +63,7 @@
     <td >admin</td>
     <td >$uper4dmin</td>
     <td>
-      <a  href="edit_client.html"><img  id="editar" src="images\edit.png"/> </a>
-      <a  href="delete_client.html"><img   id = "delete" src="images\delete.png"/> </a>
+     
     </td>
   </tr>
 

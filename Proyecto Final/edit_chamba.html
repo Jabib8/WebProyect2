@@ -1,7 +1,7 @@
 <!DOCTYPE HTML> 
 <html lang="es"> 
 <head>
- <title>new_client</title>
+ <title>edit_chamba</title>
  <!-- External CSS -->
  <link rel="stylesheet" href="./template.css" type="text/css" media="all" />
  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
@@ -9,8 +9,7 @@
  <meta charset="utf-8">
 
 </head> 
-<body> 
-</body>
+<body onload="Chamba.llenarUpdate()"> 
  <nav>
    <div class="nav-wrapper">
      <a href="dashboard.html" class="brand-logo center">Home</a>
@@ -72,7 +71,7 @@
 </div>
 
 <a class="divguardar" href="chambas.html">Cancel</a>
-<a style="margin-left: 20%;" class="waves-effect waves-light btn" onclick="Chamba.agregarChamba();" href="chambas.html">SAVE</a>
+<a style="margin-left: 20%;" class="waves-effect waves-light btn" onclick="Chamba.updateChamba();" href="chambas.html">SAVE</a>
 </fieldset>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>

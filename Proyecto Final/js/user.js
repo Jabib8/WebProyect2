@@ -22,58 +22,96 @@ var Usuario = Usuario || {
 	},
 	deleteClient: function()
 	{	
+			var fila = parseInt(localStorage.getItem('fila'));
+			var numero=0;
+			var object2 = JSON.parse(localStorage.getItem('User'));
+			for (var i = 0; i < object2.User.length; i++) {
+				if(object2.User[i]!=null)
+				{
+					if(numero==fila)
+					{
+						delete object2.User[i];  
+						localStorage.setItem('User', JSON.stringify(object2));  
+					}
+					numero++;
+				}				
+			};
+			    	
+     },
+updateUser: function()
+{	
 
-		//variable para leer lo del local storage
-		//var object2 = JSON.parse(localStorage.getItem('Ul'));
-		//ciclo para imprimir todo lo guardado
-		//for (var i = 0; i < object2.clients.length; i++) {
-		//	alert(object2.clients[i].firstName + " " + object2.clients[i].lastName);
-		//elimina un objeto
-		//delete object2.clients[i];
-		//modificar un elemento
-		//object2.clients[i].lastName = "Fonseca";
-		//alert(object2.employees[i].firstName + " " + object2.employees[i].lastName);	
-
-	},
-	updateClient: function()
-	{	
-
-		//variable para leer lo del local storage
-		var object2 = JSON.parse(localStorage.getItem('Ul'));
-		//ciclo para imprimir todo lo guardado
-		for (var i = 0; i < object2.clients.length; i++) {
-		//modificar un elemento
-		object2.clients[i].lastName = "Fonseca";
-		//alert(object2.employees[i].firstName + " " + object2.employees[i].lastName);
-	};
-
+	     var fila = parseInt(localStorage.getItem('fila'));
+			var numero=0;
+			var object2 = JSON.parse(localStorage.getItem('User'));
+			for (var i = 0; i < object2.User.length; i++) {
+				if(object2.User[i]!=null)
+				{
+					if(numero==fila)
+					{	
+						//modificar un elemento		                
+		                object2.User[i].fullname=document.getElementById('user_name').value;
+						object2.User[i].pasword=document.getElementById('pasword_repeat').value;
+						object2.User[i].username=document.getElementById('name_user').value;
+						localStorage.setItem('User', JSON.stringify(object2));  
+					}
+					numero++;
+				}				
+			};
 },
 llenarUser: function()
 {
 	if (localStorage.getItem('User')==null || localStorage.getItem('User')=="") 
 	{
-		alert('No hay usuarios guardadas.');
+		 Materialize.toast('No hay usuarios registrados!', 4000, 'rounded');
+		
 	}
 	else
 	{
+		var numfila=0;
 		var object2 = JSON.parse(localStorage.getItem('User'));
 		//ciclo para imprimir todo lo guardado
 		for (var i = 0; i < object2.User.length; i++) {
-			var tbl = document.getElementById('table_user');
-			var lastRow = tbl.rows.length;
-			var row = tbl.insertRow(lastRow);
-			var full = row.insertCell(0);
-			var username = row.insertCell(1);
-			var pasword = row.insertCell(2);
-			var actions = row.insertCell(3);
-			full.innerHTML = object2.User[i].fullname;
-			username.innerHTML = object2.User[i].username;
-			pasword.innerHTML= object2.User[i].pasword;
-			actions.innerHTML="<a  href='edit_client.html'><img  id='editar' src='edit.png'/> </a> <a  href='delete_client.html'><img  id='editar' src='delete.png'/> </a>";
-			//actions.innerHTML="<img src='edit.png' href='edit_client.html'/> <img src='delete.png' href='delete_client.html'/>";
-			};
+			if(object2.User[i]!=null)
+			{
+				var tbl = document.getElementById('table_user');
+				var lastRow = tbl.rows.length;
+				var row = tbl.insertRow(lastRow);
+				var full = row.insertCell(0);
+				var username = row.insertCell(1);
+				var pasword = row.insertCell(2);
+				var actions = row.insertCell(3);
+				full.innerHTML = object2.User[i].fullname;
+				username.innerHTML = object2.User[i].username;
+				pasword.innerHTML= object2.User[i].pasword;			
+				actions.innerHTML="<a onclick='Usuario.fila("+numfila+");'  href='edit_user.html'><img  id='editar' src='edit.png'/> </a> <a onclick='Usuario.fila("+numfila+");' href='delete_user.html'><img  src='delete.png'/> </a>";
+				numfila++;
+			}
+		};
 
 
-		}
 	}
+},
+fila: function(x){
+	localStorage.setItem('fila', x);
+},
+llenarUpdate: function()
+{
+	var fila = parseInt(localStorage.getItem('fila'));
+			var numero=0;
+			var object2 = JSON.parse(localStorage.getItem('User'));
+			for (var i = 0; i < object2.User.length; i++) {
+				if(object2.User[i]!=null)
+				{
+					if(numero==fila)
+					{
+						document.getElementById('user_name').value=object2.User[i].fullname;
+						document.getElementById('name_user').value=object2.User[i].username;
+						document.getElementById('pasword').value=object2.User[i].pasword;
+						document.getElementById('pasword_repeat').value=object2.User[i].pasword;
+					}
+					numero++;
+				}				
+			};
+}
 };
