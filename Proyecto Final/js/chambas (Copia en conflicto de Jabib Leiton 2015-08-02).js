@@ -39,41 +39,6 @@ var Chamba = Chamba || {
 		};
 
 	},
-	vereliminar: function()
-	{
-		if(localStorage.getItem('UserInline')!='Administrador')
-		{
-			var elemento = document.getElementById("user_v");
-			elemento.style.display = 'none';	
-		}	
-		var objetoSPAN = document.getElementById("userline");
-		objetoSPAN.innerHTML = localStorage.getItem('UserInline');
-		var f = parseInt(localStorage.getItem('fila_ch'));
-		var num=0;
-		var object2 = JSON.parse(localStorage.getItem('ch'));
-		for (var i = 0; i < object2.Chambas.length; i++) {
-			if(object2.Chambas[i]!=null)
-			{
-				if(num==f)
-				{
-					var objetoSPAN = document.getElementById("client_delete");
-					objetoSPAN.innerHTML = object2.Chambas[i].client+'  ?'; 				
-				}
-				num++;
-			}	
-		};
-
-	},
-	usuarioline: function()
-	{
-		if(localStorage.getItem('UserInline')!='Administrador')
-		{
-			var elemento = document.getElementById("user_v");
-			elemento.style.display = 'none';	
-		}	
-		var objetoSPAN = document.getElementById("userline");
-		objetoSPAN.innerHTML = localStorage.getItem('UserInline');; 		
-	},
 	updateChamba: function()
 	{
 		var fila = parseInt(localStorage.getItem('fila_ch'));
@@ -82,8 +47,8 @@ var Chamba = Chamba || {
 		for (var i = 0; i < object2.Chambas.length; i++) {
 			if(object2.Chambas[i]!=null)
 			{
-				if(numero==fila)
-				{	
+				    if(numero==fila)
+				    {	
 						//modificar un elemento	
 						object2.Chambas[i].id=document.getElementById('id_chamba').value;
 						object2.Chambas[i].client=document.getElementById('client_chamba').value;
@@ -101,13 +66,6 @@ var Chamba = Chamba || {
 		},
 		llenarUpdate: function()
 		{
-			if(localStorage.getItem('UserInline')!='Administrador')
-			{
-				var elemento = document.getElementById("user_v");
-				elemento.style.display = 'none';	
-			}	
-			var objetoSPAN = document.getElementById("userline");
-			objetoSPAN.innerHTML = localStorage.getItem('UserInline');
 			var fila = parseInt(localStorage.getItem('fila_ch'));
 			var numero=0;
 			var object2 = JSON.parse(localStorage.getItem('ch'));
@@ -126,50 +84,39 @@ var Chamba = Chamba || {
 				}				
 			};
 		},
-		llenarChamba: function()
-		{
-			if(localStorage.getItem('UserInline')!='Administrador')
-			{
-				var elemento = document.getElementById("user_v");
-				elemento.style.display = 'none';	
-			}	
-			var objetoSPAN = document.getElementById("userline");
-			objetoSPAN.innerHTML = localStorage.getItem('UserInline');
-			if (localStorage.getItem('ch')==null || localStorage.getItem('ch')=="") 
-			{
-				alert('No hay chambas guardadas.');
-			}
-			else
-			{
-				var object2 = JSON.parse(localStorage.getItem('ch'));
-				var numfila=0;
+llenarChamba: function()
+{
+	if (localStorage.getItem('ch')==null || localStorage.getItem('ch')=="") 
+	{
+		alert('No hay chambas guardadas.');
+		 Materialize.toast('No hay Chambas registrados!', 4000, 'rounded');
+	}
+	else
+	{
+		var object2 = JSON.parse(localStorage.getItem('ch'));
+		var numfila=0;
 		//ciclo para imprimir todo lo guardado
 		for (var i = 0; i < object2.Chambas.length; i++) {
 			if(object2.Chambas[i]!=null){
-				var tbl = document.getElementById('table_chamba');
-				var lastRow = tbl.rows.length;
-				var row = tbl.insertRow(lastRow);
-				var id = row.insertCell(0);
-				var full = row.insertCell(1);
-				var description = row.insertCell(2);
-				var date = row.insertCell(3);
-				var notes = row.insertCell(4);
-				var actions = row.insertCell(5);
-				id.innerHTML = object2.Chambas[i].id;
-				full.innerHTML = object2.Chambas[i].client;
-				description.innerHTML= object2.Chambas[i].descript;
-				date.innerHTML= object2.Chambas[i].date;
-				notes.innerHTML= object2.Chambas[i].notes;
-				actions.innerHTML="<a onclick='Chamba.fila("+numfila+");'  href='edit_chamba.html'><img  id='editar' src='edit.png'/> </a> <a onclick='Chamba.fila("+numfila+");' href='delete_chambas.html'><img  src='delete.png'/> </a>";
-				numfila++;
-			}
-		};
+			var tbl = document.getElementById('table_chamba');
+			var lastRow = tbl.rows.length;
+			var row = tbl.insertRow(lastRow);
+			var id = row.insertCell(0);
+			var full = row.insertCell(1);
+			var description = row.insertCell(2);
+			var date = row.insertCell(3);
+			var notes = row.insertCell(4);
+			var actions = row.insertCell(5);
+			id.innerHTML = object2.Chambas[i].id;
+			full.innerHTML = object2.Chambas[i].client;
+			description.innerHTML= object2.Chambas[i].descript;
+			date.innerHTML= object2.Chambas[i].date;
+			notes.innerHTML= object2.Chambas[i].notes;
+			actions.innerHTML="<a onclick='Chamba.fila("+numfila+");'  href='edit_chamba.html'><img  id='editar' src='edit.png'/> </a> <a onclick='Chamba.fila("+numfila+");' href='delete_chambas.html'><img  src='delete.png'/> </a>";
+		    numfila++;
+		    }
+			};
 
+		}
 	}
-}
-
 };
-$('.datepicker').pickadate({
-    selectMonths: true,
-    selectYears: 15
-  });

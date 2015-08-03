@@ -12,12 +12,14 @@
 <body onload="Chamba.llenarUpdate()"> 
  <nav>
    <div class="nav-wrapper">
-     <a href="dashboard.html" class="brand-logo center">Home</a>
+     <!--<a href="dashboard.html" class="brand-logo center">Home</a>-->
      <ul id="nav-mobile" class="left hide-down">
       <li><a href="clients.html">Client</a></li>
       <li><a href="chambas.html">Chambas</a></li> 
       <li><a href="invoices.html">Invoices</a></li>
-      <li><a href="user.html">User<i class="material-icons right">person_pin</i> </a></li>
+      <li id="user_v"><a href="user.html">User</a></li> 
+      <li id="userline"><a>User</a></li> 
+      <li><a href="login.html"><i class="material-icons">person_pin</i></a></li>
     </ul>
   </div>
 </nav>
@@ -36,33 +38,33 @@
   <div class="row">
     <form class="col s12">
       <div class="row center-align">
-        <div class="input-field col s12">
-          <input  id="id_chamba" type="text" class="validate">
-          <label for="first_name">ID</label>
+        <div class="input col s12">
+          <input  id="id" type="text" class="validate">
+          <label for="id">ID</label>
         </div>
       </div>
       <div class="row center-align">
-        <div class="input-field col s12">
-          <input  id="client_chamba" type="text" class="validate">
-          <label for="first_name">Client</label>
+        <div class="input col s12">
+          <input  id="name" type="text" class="validate">
+          <label for="name">Client</label>
         </div>
       </div>
       <div class="row center-align">
-        <div class="input-field col s12">
+        <div class="input col s12">
          <textarea id="descripcion_chamba" class="materialize-textarea"></textarea>
-         <label for="textarea1">Description</label>
+         <label for="descripcion_chamba">Description</label>
        </div>
      </div>
      <div class="row center-align">
-      <div class="input-field col s12">
+      <div class="input col s12">
         <input id="date_chamba" type="date" class="datepicker">
-        <label for="date">Date</label>
+        <label for="date_chamba">Date</label>
       </div>
     </div>
     <div class="row center-align">
-      <div class="input-field col s12">
+      <div class="input col s12">
         <textarea id="notes_chamba" class="materialize-textarea"></textarea>
-        <label for="textarea2">Notes</label>
+        <label for="notes_chamba">Notes</label>
       </div>
     </div>
     

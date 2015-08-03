@@ -5,26 +5,26 @@
  <!-- External CSS -->
  <link rel="stylesheet" href="./template.css" type="text/css" media="all" />
  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
  <meta charset="utf-8">
 
 
 </head> 
 <body onload="Invoice.llenarUpdate()"> 
-
-<nav>
+  <nav>
    <div class="nav-wrapper">
-     <a href="dashboard.html" class="brand-logo center">Home</a>
+     <!--<a href="dashboard.html" class="brand-logo center">Home</a>-->
      <ul id="nav-mobile" class="left hide-down">
       <li><a href="clients.html">Client</a></li>
       <li><a href="chambas.html">Chambas</a></li> 
       <li><a href="invoices.html">Invoices</a></li>
-      <li><a href="user.html">User<i class="material-icons right">person_pin</i> </a></li>
+      <li id="user_v"><a href="user.html">User</a></li> 
+      <li id="userline"><a>User</a></li> 
+      <li><a href="login.html"><i class="material-icons">person_pin</i></a></li>
     </ul>
   </div>
 </nav>
-
- <div class="divSubtitulo">
+<div class="divSubtitulo">
 
   <img class="divimg" src="images\invoice.png" /> 
   <span class="subtitulo flow-text">
@@ -36,27 +36,27 @@
 </div>
 
 <fieldset class="flow-text" style=" margin-left: 20%;margin-right: 20%; border: none;">
-<div class="row">
-  <form class="col s12">
-    <div class="row center-align">
-      <div class="input-field col s12">
-        <input  id="first_name" type="text" class="validate">
-        <label for="first_name">Client</label>
+  <div class="row">
+    <form class="col s12">
+      <div class="row center-align">
+        <div class="input col s12">
+          <input  id="first_name" type="text" class="validate">
+          <label for="first_name">Client</label>
         </div>
-    </div>
-   <div class="row center-align">
-      <div class="input-field col s12">
+      </div>
+      <div class="row center-align">
+        <div class="input col s12">
          <textarea id="description_invoice" class="materialize-textarea"></textarea>
-      <label for="description_invoice">Description</label>
-        </div>
-    </div>
-    <div class="row center-align">
-      <div class="input-field col s12">
+         <label for="description_invoice">Description</label>
+       </div>
+     </div>
+     <div class="row center-align">
+      <div class="input col s12">
         <input id="mount_invoice" type="number" class="number">
         <label for="mount_invoice">Mount</label>
-        </div>
+      </div>
     </div>
-  
+    
     
 
   </form>
@@ -70,28 +70,28 @@
 <script src="js/invoices.js" type="text/javascript"></script>
 </body>
 <footer class="page-footer">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Chamberos</h5>
-                <p class="grey-text text-lighten-4">Web Proyect.</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Bye?</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="login.html">Exit</a></li>
-              
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2015 Copyright By Diego Garcia & Jabib Leiton
-            <a class="grey-text text-lighten-4 right" href="dashboard.html">Home</a>
-            </div>
-          </div>
-        </footer>
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Chamberos</h5>
+        <p class="grey-text text-lighten-4">Web Proyect.</p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Bye?</h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="login.html">Exit</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      © 2015 Copyright By Diego Garcia & Jabib Leiton
+      <a class="grey-text text-lighten-4 right" href="dashboard.html">Home</a>
+    </div>
+  </div>
+</footer>
 </body> 
 
 </html> 

@@ -9,23 +9,17 @@
  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
  <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
 </head> 
-
 <body onload="Usuario.llenarUser()"> 
-<script language="JavaScript">
-
-    function coordenadas(x,y){
-        var mensaje = 'La celda está situada en la columna '+x+' y en la fila '+y;
-        return mensaje;
-    }
-</script>
  <nav>
    <div class="nav-wrapper">
-     <a href="dashboard.html" class="brand-logo center">Home</a>
+     <!--<a href="dashboard.html" class="brand-logo center">Home</a>-->
      <ul id="nav-mobile" class="left hide-down">
       <li><a href="clients.html">Client</a></li>
       <li><a href="chambas.html">Chambas</a></li> 
       <li><a href="invoices.html">Invoices</a></li>
-      <li><a href="user.html">User<i class="material-icons right">person_pin</i> </a></li>
+      <li id="user_v"><a href="user.html">User</a></li> 
+      <li id="userline"><a>User</a></li> 
+      <li><a href="login.html"><i class="material-icons">person_pin</i></a></li>
     </ul>
   </div>
 </nav>
@@ -42,10 +36,10 @@
 </div>
 <script language="JavaScript">
 
-    function coordenadas(x){
-        var mensaje = 'La celda está situada en la fila '+x;
-        return mensaje;
-    }
+  function coordenadas(x){
+    var mensaje = 'La celda está situada en la fila '+x;
+    return mensaje;
+  }
 </script>
 
 <table  class="centered hoverable striped bordered" id="table_user">

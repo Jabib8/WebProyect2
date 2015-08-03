@@ -22,35 +22,71 @@ var Usuario = Usuario || {
 	},
 	deleteClient: function()
 	{	
-			var fila = parseInt(localStorage.getItem('fila'));
-			var numero=0;
-			var object2 = JSON.parse(localStorage.getItem('User'));
-			for (var i = 0; i < object2.User.length; i++) {
-				if(object2.User[i]!=null)
+		var fila = parseInt(localStorage.getItem('fila'));
+		var numero=0;
+		var object2 = JSON.parse(localStorage.getItem('User'));
+		for (var i = 0; i < object2.User.length; i++) {
+			if(object2.User[i]!=null)
+			{
+				if(numero==fila)
 				{
-					if(numero==fila)
-					{
-						delete object2.User[i];  
-						localStorage.setItem('User', JSON.stringify(object2));  
-					}
-					numero++;
-				}				
-			};
-			    	
-     },
-updateUser: function()
-{	
+					delete object2.User[i];  
+					localStorage.setItem('User', JSON.stringify(object2));  
+				}
+				numero++;
+			}				
+		};
 
-	     var fila = parseInt(localStorage.getItem('fila'));
-			var numero=0;
-			var object2 = JSON.parse(localStorage.getItem('User'));
-			for (var i = 0; i < object2.User.length; i++) {
-				if(object2.User[i]!=null)
+	},
+	vereliminar: function()
+	{
+		if(localStorage.getItem('UserInline')!='Administrador')
+		{
+			var elemento = document.getElementById("user_v");
+			elemento.style.display = 'none';	
+		}	
+		var objetoSPAN = document.getElementById("userline");
+		objetoSPAN.innerHTML = localStorage.getItem('UserInline');
+		var f = parseInt(localStorage.getItem('fila'));
+		var num=0;
+		var object2 = JSON.parse(localStorage.getItem('User'));
+		for (var i = 0; i < object2.User.length; i++) {
+			if(object2.User[i]!=null)
+			{
+				if(num==f)
 				{
-					if(numero==fila)
-					{	
+					var objetoSPAN = document.getElementById("client_delete");
+					objetoSPAN.innerHTML = object2.User[i].fullname+'  ?'; 				
+				}
+				num++;
+			}	
+		};
+
+	},
+	
+	usuarioline: function()
+	{
+		if(localStorage.getItem('UserInline')!='Administrador')
+		{
+			var elemento = document.getElementById("user_v");
+			elemento.style.display = 'none';	
+		}	
+		var objetoSPAN = document.getElementById("userline");
+		objetoSPAN.innerHTML = localStorage.getItem('UserInline');; 		
+	},
+	updateUser: function()
+	{	
+
+		var fila = parseInt(localStorage.getItem('fila'));
+		var numero=0;
+		var object2 = JSON.parse(localStorage.getItem('User'));
+		for (var i = 0; i < object2.User.length; i++) {
+			if(object2.User[i]!=null)
+			{
+				if(numero==fila)
+				{	
 						//modificar un elemento		                
-		                object2.User[i].fullname=document.getElementById('user_name').value;
+						object2.User[i].fullname=document.getElementById('user_name').value;
 						object2.User[i].pasword=document.getElementById('pasword_repeat').value;
 						object2.User[i].username=document.getElementById('name_user').value;
 						localStorage.setItem('User', JSON.stringify(object2));  
@@ -58,18 +94,24 @@ updateUser: function()
 					numero++;
 				}				
 			};
-},
-llenarUser: function()
-{
-	if (localStorage.getItem('User')==null || localStorage.getItem('User')=="") 
-	{
-		 Materialize.toast('No hay usuarios registrados!', 4000, 'rounded');
-		
-	}
-	else
-	{
-		var numfila=0;
-		var object2 = JSON.parse(localStorage.getItem('User'));
+		},
+		llenarUser: function()
+		{
+			if(localStorage.getItem('UserInline')!='Administrador')
+			{
+				var elemento = document.getElementById("user_v");
+				elemento.style.display = 'none';	
+			}	
+			var objetoSPAN = document.getElementById("userline");
+			objetoSPAN.innerHTML = localStorage.getItem('UserInline');
+			if (localStorage.getItem('User')==null || localStorage.getItem('User')=="") 
+			{
+				alert('No hay usuarios guardadas.');
+			}
+			else
+			{
+				var numfila=0;
+				var object2 = JSON.parse(localStorage.getItem('User'));
 		//ciclo para imprimir todo lo guardado
 		for (var i = 0; i < object2.User.length; i++) {
 			if(object2.User[i]!=null)
@@ -97,21 +139,28 @@ fila: function(x){
 },
 llenarUpdate: function()
 {
+	if(localStorage.getItem('UserInline')!='Administrador')
+	{
+		var elemento = document.getElementById("user_v");
+		elemento.style.display = 'none';	
+	}	
+	var objetoSPAN = document.getElementById("userline");
+	objetoSPAN.innerHTML = localStorage.getItem('UserInline');
 	var fila = parseInt(localStorage.getItem('fila'));
-			var numero=0;
-			var object2 = JSON.parse(localStorage.getItem('User'));
-			for (var i = 0; i < object2.User.length; i++) {
-				if(object2.User[i]!=null)
-				{
-					if(numero==fila)
-					{
-						document.getElementById('user_name').value=object2.User[i].fullname;
-						document.getElementById('name_user').value=object2.User[i].username;
-						document.getElementById('pasword').value=object2.User[i].pasword;
-						document.getElementById('pasword_repeat').value=object2.User[i].pasword;
-					}
-					numero++;
-				}				
-			};
+	var numero=0;
+	var object2 = JSON.parse(localStorage.getItem('User'));
+	for (var i = 0; i < object2.User.length; i++) {
+		if(object2.User[i]!=null)
+		{
+			if(numero==fila)
+			{
+				document.getElementById('user_name').value=object2.User[i].fullname;
+				document.getElementById('name_user').value=object2.User[i].username;
+				document.getElementById('pasword').value=object2.User[i].pasword;
+				document.getElementById('pasword_repeat').value=object2.User[i].pasword;
+			}
+			numero++;
+		}				
+	};
 }
 };

@@ -42,54 +42,27 @@ var Invoice = Invoice || {
 	},
 	vereliminar: function()
 	{
-		if(localStorage.getItem('UserInline')!='Administrador')
-		{
-			var elemento = document.getElementById("user_v");
-			elemento.style.display = 'none';	
-		}	
-		var objetoSPAN = document.getElementById("userline");
-		objetoSPAN.innerHTML = localStorage.getItem('UserInline');
-		var f = parseInt(localStorage.getItem('fila_inv'));
-		var num=0;
+		alert('aqui');
+		var fila = parseInt(localStorage.getItem('fila_inv'));
+		var numero=0;
 		var object2 = JSON.parse(localStorage.getItem('inv'));
+
 		for (var i = 0; i < object2.Invoices.length; i++) {
 			if(object2.Invoices[i]!=null)
 			{
-				if(num==f)
-				{
-					var objetoSPAN = document.getElementById("client_delete");
-					objetoSPAN.innerHTML = object2.Invoices[i].client+'  ?'; 				
-				}
-				num++;
-			}	
-		};
 
-	},
-	usuarioline: function()
-	{
-		if(localStorage.getItem('UserInline')!='Administrador')
-		{
-			var elemento = document.getElementById("user_v");
-			elemento.style.display = 'none';	
-		}	
-		var objetoSPAN = document.getElementById("userline");
-		objetoSPAN.innerHTML = localStorage.getItem('UserInline');
-		if (localStorage.getItem('Ul')!=null || localStorage.getItem('Ul')!="") 
-		{    
-			var object2 = JSON.parse(localStorage.getItem('Ul'));
-			var numfila=0;
-			var options = '';
-			for (var i = 0; i < object2.clients.length; i++) {
-				if(object2.clients[i]!=null)
+				if(numero==fila)
 				{
-					options += '<option value="'+object2.clients[i].firstName+' '+object2.clients[i].lastName+'" />';
-					document.getElementById('clientes').innerHTML = options;
+					alert('ver elemento eliminar:   '+bject2.Invoices[i].client);
+					document.getElementById('client_delete').value= object2.Invoices[i].client; 
 				}
-			};
-		}   
+				numero++;
+			}				
+		};
 	},
 	updateInvoice: function()
 	{
+		alert('Cambiaremos datos');
 		var fila = parseInt(localStorage.getItem('fila_inv'));
 		var numero=0;
 		var object2 = JSON.parse(localStorage.getItem('inv'));
@@ -114,13 +87,6 @@ var Invoice = Invoice || {
 		},
 		llenarUpdate: function()
 		{
-			if(localStorage.getItem('UserInline')!='Administrador')
-			{
-				var elemento = document.getElementById("user_v");
-				elemento.style.display = 'none';	
-			}	
-			var objetoSPAN = document.getElementById("userline");
-			objetoSPAN.innerHTML = localStorage.getItem('UserInline');
 			var fila = parseInt(localStorage.getItem('fila_inv'));
 			var numero=0;
 			var object2 = JSON.parse(localStorage.getItem('inv'));
@@ -129,6 +95,7 @@ var Invoice = Invoice || {
 				{
 					if(numero==fila)
 					{
+						alert(object2.Invoices[i].client);
 						document.getElementById('first_name').value=object2.Invoices[i].client;
 						document.getElementById('description_invoice').value=object2.Invoices[i].descript;
 						document.getElementById('mount_invoice').value=object2.Invoices[i].mount;
@@ -139,16 +106,10 @@ var Invoice = Invoice || {
 		},
 		llenarInvoice: function()
 		{
-			if(localStorage.getItem('UserInline')!='Administrador')
-			{
-				var elemento = document.getElementById("user_v");
-				elemento.style.display = 'none';	
-			}	
-			var objetoSPAN = document.getElementById("userline");
-			objetoSPAN.innerHTML = localStorage.getItem('UserInline');
 			if (localStorage.getItem('inv')==null || localStorage.getItem('inv')=="") 
 			{
 				alert("No hay elementos en esta tabla para mostrar.");
+				 Materialize.toast('No hay elementos en esta tabla!', 4000, 'rounded');
 			}
 			else
 			{

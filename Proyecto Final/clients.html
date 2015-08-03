@@ -13,25 +13,26 @@
 <body onload="Util.llenartabla()"> 
   <nav>
    <div class="nav-wrapper">
-     <a href="dashboard.html" class="brand-logo center">Home</a>
+     <!--<a href="dashboard.html" class="brand-logo center">Home</a>-->
      <ul id="nav-mobile" class="left hide-down">
-      <li><a href="clients.html">Client</a></li>
+      <li class="active"><a href="clients.html">Client</a></li>
       <li><a href="chambas.html">Chambas</a></li> 
       <li><a href="invoices.html">Invoices</a></li>
-      <li><a href="user.html">User<i class="material-icons right">person_pin</i> </a></li>
+      <li id="user_v"><a href="user.html">User</a></li> 
+      <li id="userline"><a>User</a></li> 
+      <li><a href="login.html"><i class="material-icons">person_pin</i></a></li>
     </ul>
   </div>
 </nav>
+<div class="divSubtitulo" >
 
-  <div class="divSubtitulo" >
-
-    <img class="divimg" src="images\user.png" /> 
-    <span class="subtitulo flow-text">
-     CLIENTS
-   </span>
-   <a href="new_client.html"><button  class="divbtn waves-effect waves-light btn">
-    NEW CLIENT
-  </button></a>
+  <img class="divimg" src="images\user.png" /> 
+  <span class="subtitulo flow-text">
+   CLIENTS
+ </span>
+ <a href="new_client.html"><button  class="divbtn waves-effect waves-light btn">
+  NEW CLIENT
+</button></a>
 
 </div>
 

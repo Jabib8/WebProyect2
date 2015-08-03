@@ -11,15 +11,17 @@
 
 
 </head> 
-<body> 
+<body onload="Util.vereliminar();"> 
   <nav>
    <div class="nav-wrapper">
-     <a href="dashboard.html" class="brand-logo center">Home</a>
+     <!--<a href="dashboard.html" class="brand-logo center">Home</a>-->
      <ul id="nav-mobile" class="left hide-down">
       <li><a href="clients.html">Client</a></li>
       <li><a href="chambas.html">Chambas</a></li> 
       <li><a href="invoices.html">Invoices</a></li>
-      <li><a href="user.html">User<i class="material-icons right">person_pin</i> </a></li>
+      <li id="user_v"><a href="user.html">User</a></li> 
+      <li id="userline"><a>User</a></li> 
+      <li><a href="login.html"><i class="material-icons">person_pin</i></a></li>
     </ul>
   </div>
 </nav>
@@ -34,14 +36,11 @@
   </button></a>
 </div>
 <h3 align="center">
-  Are you sure want to delete the client with name
-  <br align="center">
-  "Bladmir Arroyo" ?
-</br>
-</h3>
+  Are you sure want to delete the client with name</h3>
+  <h3 align="center" id="client_delete"></h3>
 <div class="row"  style=" margin-left: 35%;margin-right: 35%; border: none;">
  <div class="col 6"> <a href="clients.html" class="waves-effect waves-light btn red-text">NO</a></div>
- <div class="col 6"> <a href="clients.html" class="waves-effect waves-light btn " onclick="Util.deleteClient();">YES</a></div>
+ <div class="col 6"> <a  class="waves-effect waves-light btn " onclick="Util.deleteClient();" href="clients.html">YES</a></div>
 </div>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
