@@ -23,22 +23,25 @@ var Invoice = Invoice || {
 		localStorage.setItem('inv', JSON.stringify(o));
 	},
 	deleteInvoice: function()
-	{	
-		var fila = parseInt(localStorage.getItem('fila_inv'));
-		var numero=0;
+	{			
+		var fila = parseInt(localStorage.getItem('fila'));
+		//elimina el usuario user
+		var object = JSON.parse(localStorage.getItem('inv'));
+		delete object.Invoices[fila];  
+		localStorage.setItem('inv', JSON.stringify(object));
+		var tex='{"Invoices":[]}';
+		var ob;
+		ob = JSON.parse(tex);
 		var object2 = JSON.parse(localStorage.getItem('inv'));
-		for (var i = 0; i < object2.Invoices.length; i++) {
-			if(object2.Invoices[i]!=null)
-			{
-				if(numero==fila)
-				{
-					delete object2.Invoices[i];  
-					localStorage.setItem('inv', JSON.stringify(object2));  
-				}
-				numero++;
-			}				
+		for (i = 0; i < object2.Invoices.length; ++i) {
+			if (object2.Invoices[i] != null) {
+				ob ['Invoices'].push({"id":'1',"client":object2.Invoices[i].client,"descript":object2.Invoices[i].descript,"mount":object2.Invoices[i].mount});
+				tex = JSON.stringify (ob);	
+			}
 		};
-
+		tex = JSON.stringify (ob);
+		ob = JSON.parse(tex);
+		localStorage.setItem('inv', JSON.stringify(ob));
 	},
 	vereliminar: function()
 	{
@@ -49,21 +52,10 @@ var Invoice = Invoice || {
 		}	
 		var objetoSPAN = document.getElementById("userline");
 		objetoSPAN.innerHTML = localStorage.getItem('UserInline');
-		var f = parseInt(localStorage.getItem('fila_inv'));
-		var num=0;
+		var i = parseInt(localStorage.getItem('fila'));
 		var object2 = JSON.parse(localStorage.getItem('inv'));
-		for (var i = 0; i < object2.Invoices.length; i++) {
-			if(object2.Invoices[i]!=null)
-			{
-				if(num==f)
-				{
-					var objetoSPAN = document.getElementById("client_delete");
-					objetoSPAN.innerHTML = object2.Invoices[i].client+'  ?'; 				
-				}
-				num++;
-			}	
-		};
-
+		var objetoSPAN = document.getElementById("client_delete");
+		objetoSPAN.innerHTML = object2.Invoices[i].client+'  ?';
 	},
 	usuarioline: function()
 	{
@@ -74,106 +66,81 @@ var Invoice = Invoice || {
 		}	
 		var objetoSPAN = document.getElementById("userline");
 		objetoSPAN.innerHTML = localStorage.getItem('UserInline');
-		if (localStorage.getItem('Ul')!=null || localStorage.getItem('Ul')!="") 
+		if (localStorage.getItem('Client')!=null || localStorage.getItem('Client')!="") 
 		{    
-			var object2 = JSON.parse(localStorage.getItem('Ul'));
-			var numfila=0;
+			var object2 = JSON.parse(localStorage.getItem('Client'));
 			var options = '';
 			for (var i = 0; i < object2.clients.length; i++) {
-				if(object2.clients[i]!=null)
-				{
 					options += '<option value="'+object2.clients[i].firstName+' '+object2.clients[i].lastName+'" />';
 					document.getElementById('clientes').innerHTML = options;
-				}
 			};
 		}   
 	},
 	updateInvoice: function()
 	{
-		var fila = parseInt(localStorage.getItem('fila_inv'));
-		var numero=0;
-		var object2 = JSON.parse(localStorage.getItem('inv'));
-		for (var i = 0; i < object2.Invoices.length; i++) {
-			if(object2.Invoices[i]!=null)
-			{
-				if(numero==fila)
-				{	
-					alert('numero '+fila+'  ciclo  '+numero);
-						//modificar un elemento		                
-						object2.Invoices[i].client=document.getElementById('first_name').value;
-						object2.Invoices[i].descript=document.getElementById('description_invoice').value;
-						object2.Invoices[i].mount=document.getElementById('mount_invoice').value;
-						localStorage.setItem('inv', JSON.stringify(object2));  
-					}
-					numero++;
-				}				
-			};
-		},
-		fila: function(x){
-			localStorage.setItem('fila_inv', x);
-		},
-		llenarUpdate: function()
+
+		var i = parseInt(localStorage.getItem('fila'));	 
+		var object2 = JSON.parse(localStorage.getItem('inv'));               
+		object2.Invoices[i].client=document.getElementById('first_name').value;
+		object2.Invoices[i].descript=document.getElementById('description_invoice').value;
+		object2.Invoices[i].mount=document.getElementById('mount_invoice').value;
+		localStorage.setItem('inv', JSON.stringify(object2));  
+
+	},
+	fila: function(x){
+		localStorage.setItem('fila', x);
+	},
+	llenarUpdate: function()
+	{
+		if(localStorage.getItem('UserInline')!='Administrador')
 		{
-			if(localStorage.getItem('UserInline')!='Administrador')
-			{
-				var elemento = document.getElementById("user_v");
-				elemento.style.display = 'none';	
-			}	
-			var objetoSPAN = document.getElementById("userline");
-			objetoSPAN.innerHTML = localStorage.getItem('UserInline');
-			var fila = parseInt(localStorage.getItem('fila_inv'));
-			var numero=0;
+			var elemento = document.getElementById("user_v");
+			elemento.style.display = 'none';	
+		}	
+		var objetoSPAN = document.getElementById("userline");
+		objetoSPAN.innerHTML = localStorage.getItem('UserInline');
+		var i = parseInt(localStorage.getItem('fila'));
+		var object2 = JSON.parse(localStorage.getItem('inv'));		
+		document.getElementById('first_name').value=object2.Invoices[i].client;
+		document.getElementById('description_invoice').value=object2.Invoices[i].descript;
+		document.getElementById('mount_invoice').value=object2.Invoices[i].mount;
+
+	},
+	llenarInvoice: function()
+	{
+		if(localStorage.getItem('UserInline')!='Administrador')
+		{
+			var elemento = document.getElementById("user_v");
+			elemento.style.display = 'none';	
+		}	
+		var objetoSPAN = document.getElementById("userline");
+		objetoSPAN.innerHTML = localStorage.getItem('UserInline');
+		if (localStorage.getItem('inv')==null || localStorage.getItem('inv')=="") 
+		{
+		  Materialize.toast('No hay Invoices Guardados!', 4500, 'rounded');
+		}
+		else
+		{
 			var object2 = JSON.parse(localStorage.getItem('inv'));
 			for (var i = 0; i < object2.Invoices.length; i++) {
 				if(object2.Invoices[i]!=null)
 				{
-					if(numero==fila)
-					{
-						document.getElementById('first_name').value=object2.Invoices[i].client;
-						document.getElementById('description_invoice').value=object2.Invoices[i].descript;
-						document.getElementById('mount_invoice').value=object2.Invoices[i].mount;
-					}
-					numero++;
-				}				
+					var tbl = document.getElementById('table_invoices');
+					var lastRow = tbl.rows.length;
+					var row = tbl.insertRow(lastRow);
+					var id = row.insertCell(0);
+					var client = row.insertCell(1);
+					var description = row.insertCell(2);
+					var mount = row.insertCell(3);
+					var actions = row.insertCell(4);
+					id.innerHTML = i;
+					client.innerHTML = object2.Invoices[i].client;
+					description.innerHTML= object2.Invoices[i].descript;
+					mount.innerHTML= object2.Invoices[i].mount;
+					actions.innerHTML="<a onclick='Invoice.fila("+i+");'  href='edit_invoice.html'><img  id='editar' src='edit.png'/> </a> <a onclick='Invoice.fila("+i+");' href='delete_invoice.html'><img  src='delete.png'/> </a>";					
+				}
 			};
-		},
-		llenarInvoice: function()
-		{
-			if(localStorage.getItem('UserInline')!='Administrador')
-			{
-				var elemento = document.getElementById("user_v");
-				elemento.style.display = 'none';	
-			}	
-			var objetoSPAN = document.getElementById("userline");
-			objetoSPAN.innerHTML = localStorage.getItem('UserInline');
-			if (localStorage.getItem('inv')==null || localStorage.getItem('inv')=="") 
-			{
-				alert("No hay elementos en esta tabla para mostrar.");
-			}
-			else
-			{
-				var object2 = JSON.parse(localStorage.getItem('inv'));
-				var numfila=0;
-				for (var i = 0; i < object2.Invoices.length; i++) {
-					if(object2.Invoices[i]!=null)
-					{
-						var tbl = document.getElementById('table_invoices');
-						var lastRow = tbl.rows.length;
-						var row = tbl.insertRow(lastRow);
-						var id = row.insertCell(0);
-						var client = row.insertCell(1);
-						var description = row.insertCell(2);
-						var mount = row.insertCell(3);
-						var actions = row.insertCell(4);
-						id.innerHTML = i;
-						client.innerHTML = object2.Invoices[i].client;
-						description.innerHTML= object2.Invoices[i].descript;
-						mount.innerHTML= object2.Invoices[i].mount;
-						actions.innerHTML="<a onclick='Invoice.fila("+numfila+");'  href='edit_invoice.html'><img  id='editar' src='edit.png'/> </a> <a onclick='Invoice.fila("+numfila+");' href='delete_invoice.html'><img  src='delete.png'/> </a>";
-						numfila++;
-					}
-				};
-			}
-
 		}
-	};
+
+	}
+};

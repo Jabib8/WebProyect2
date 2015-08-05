@@ -3,16 +3,16 @@ var Util = Util || {
 	agregarClient: function()
 	{	
 		var obj;
-		if (localStorage.getItem('Ul')==null || localStorage.getItem('Ul')=="") 
+		if (localStorage.getItem('Client')==null || localStorage.getItem('Client')=="") 
 		{
 			text='{"clients":[]}';
 			obj = JSON.parse(text);
 		}
 		else
 		{
-			obj=JSON.parse(localStorage.getItem('Ul'));
+			obj=JSON.parse(localStorage.getItem('Client'));
 		}		
-		//este mae convierte a string la variable global llamada text		
+		// convierte a string la variable global llamada text	
 		
 		//este mae agrega otro nuevo elemento		
 		obj ['clients'].push({"firstName":document.getElementById('first_name_client').value,"lastName":document.getElementById('last_name_client').value,"id":document.getElementById('id_client').value,"phone":document.getElementById('phone_client').value});
@@ -21,50 +21,36 @@ var Util = Util || {
 		//de nuevo a parse del nuevo elemento
 		obj = JSON.parse(text);
 		//lo guarda en local storage
-		localStorage.setItem('Ul', JSON.stringify(obj));
+		localStorage.setItem('Client', JSON.stringify(obj));
 	},
 	deleteClient: function()
 	{	
-		var fila = parseInt(localStorage.getItem('fila_cli'));
-		var numero=0;
-		var object2 = JSON.parse(localStorage.getItem('Ul'));
-		for (var i = 0; i < object2.clients.length; i++) {
-			if(object2.clients[i]!=null)
-			{
-				if(numero==fila)
-				{
-					delete object2.clients[i];  
-					localStorage.setItem('Ul', JSON.stringify(object2));  
-				}
-				numero++;
-			}				
+		var fila = parseInt(localStorage.getItem('fila'));
+		//elimina el usuario
+		var object = JSON.parse(localStorage.getItem('Client'));
+		delete object.clients[fila];  
+		localStorage.setItem('Client', JSON.stringify(object));
+		var tex='{"clients":[]}';
+		var ob;
+		ob = JSON.parse(tex);
+		var object2 = JSON.parse(localStorage.getItem('Client'));
+		for (i = 0; i < object2.clients.length; ++i) {
+			if (object2.clients[i] != null) {
+				ob ['clients'].push({"firstName":object2.clients[i].firstName,"lastName":object2.clients[i].lastName,"id":object2.clients[i].id,"phone":object2.clients[i].phone});
+				tex = JSON.stringify (ob);	
+			}
 		};
-
+		tex = JSON.stringify (ob);
+		ob = JSON.parse(tex);
+		localStorage.setItem('Client', JSON.stringify(ob));
 	},
 	vereliminar: function()
 	{
-		if(localStorage.getItem('UserInline')!='Administrador')
-		{
-			var elemento = document.getElementById("user_v");
-			elemento.style.display = 'none';	
-		}	
-		var objetoSPAN = document.getElementById("userline");
-		objetoSPAN.innerHTML = localStorage.getItem('UserInline');
-		var f = parseInt(localStorage.getItem('fila_cli'));
-		var num=0;
-		var object2 = JSON.parse(localStorage.getItem('Ul'));
-		for (var i = 0; i < object2.clients.length; i++) {
-			if(object2.clients[i]!=null)
-			{
-				if(num==f)
-				{
-					var objetoSPAN = document.getElementById("client_delete");
-					objetoSPAN.innerHTML = object2.clients[i].firstName+' '+object2.clients[i].lastName+'  ?'; 				
-				}
-				num++;
-			}	
-		};
-
+		Util.usuarioline();
+		var i = parseInt(localStorage.getItem('fila'));
+		var object2 = JSON.parse(localStorage.getItem('Client'));
+		var objetoSPAN = document.getElementById("client_delete");
+		objetoSPAN.innerHTML = object2.clients[i].firstName+' '+object2.clients[i].lastName+'  ?';
 	},
 	usuarioline: function()
 	{
@@ -78,74 +64,39 @@ var Util = Util || {
 	},
 	updateInvoice: function()
 	{
-		var fila = parseInt(localStorage.getItem('fila_cli'));
-		var numero=0;
-		var object2 = JSON.parse(localStorage.getItem('Ul'));
-		for (var i = 0; i < object2.clients.length; i++) {
-			if(object2.clients[i]!=null)
-			{
-				if(numero==fila)
-				{	
-						//modificar un elemento	
-						object2.clients[i].firstName=document.getElementById('first_name').value;
-						object2.clients[i].lastName=document.getElementById('last_name').value;
-						object2.clients[i].id=document.getElementById('id').value;
-						object2.clients[i].phone=document.getElementById('phone').value; 
-						localStorage.setItem('Ul', JSON.stringify(object2));
-					}
-					numero++;
-				}				
-			};
-		},
-		fila: function(x){
-			localStorage.setItem('fila_cli', x);
-		},
-		llenarUpdate: function()
+		var i = parseInt(localStorage.getItem('fila'));
+		var object2 = JSON.parse(localStorage.getItem('Client'));
+		object2.clients[i].firstName=document.getElementById('first_name').value;
+		object2.clients[i].lastName=document.getElementById('last_name').value;
+		object2.clients[i].id=document.getElementById('id').value;
+		object2.clients[i].phone=document.getElementById('phone').value; 
+		localStorage.setItem('Client', JSON.stringify(object2));
+	},
+	fila: function(x){
+		localStorage.setItem('fila', x);
+	},
+	llenarUpdate: function()
+	{
+		Util.usuarioline();
+		var i = parseInt(localStorage.getItem('fila'));
+		var object2 = JSON.parse(localStorage.getItem('Client'));
+		document.getElementById('first_name').value=object2.clients[i].firstName;
+		document.getElementById('last_name').value=object2.clients[i].lastName;
+		document.getElementById('id').value=object2.clients[i].id;
+		document.getElementById('phone').value=object2.clients[i].phone;
+	},
+	llenartabla: function()
+	{
+		Util.usuarioline();
+		if (localStorage.getItem('Client')==null || localStorage.getItem('Client')=="") 
 		{
-			if(localStorage.getItem('UserInline')!='Administrador')
-			{
-				var elemento = document.getElementById("user_v");
-				elemento.style.display = 'none';	
-			}	
-			var objetoSPAN = document.getElementById("userline");
-			objetoSPAN.innerHTML = localStorage.getItem('UserInline');
-			var fila = parseInt(localStorage.getItem('fila_cli'));
-			var numero=0;
-			var object2 = JSON.parse(localStorage.getItem('Ul'));
-			for (var i = 0; i < object2.clients.length; i++) {
-				if(object2.clients[i]!=null)
-				{
-					if(numero==fila)
-					{						
-						document.getElementById('first_name').value=object2.clients[i].firstName;
-						document.getElementById('last_name').value=object2.clients[i].lastName;
-						document.getElementById('id').value=object2.clients[i].id;
-						document.getElementById('phone').value=object2.clients[i].phone;
-					}
-					numero++;
-				}				
-			};
-		},
-		llenartabla: function()
+			  Materialize.toast('No hay elementos guardados!', 4500, 'rounded');
+		}
+		else
 		{
-			if(localStorage.getItem('UserInline')!='Administrador')
-			{
-				var elemento = document.getElementById("user_v");
-				elemento.style.display = 'none';	
-			}	
-			var objetoSPAN = document.getElementById("userline");
-			objetoSPAN.innerHTML = localStorage.getItem('UserInline');
-			if (localStorage.getItem('inv')==null || localStorage.getItem('inv')=="") 
-			{
-				alert("No hay elementos en esta tabla para mostrar.");
-			}
-			else
-			{
-				var numfila=0;
-				var object2 = JSON.parse(localStorage.getItem('Ul'));
+			var object2 = JSON.parse(localStorage.getItem('Client'));
 		//ciclo para imprimir todo lo guardado
 		for (var i = 0; i < object2.clients.length; i++) {
-			if(object2.clients[i]!=null){
 				var tbl = document.getElementById('tableclient');
 				var lastRow = tbl.rows.length;
 				var row = tbl.insertRow(lastRow);
@@ -156,9 +107,7 @@ var Util = Util || {
 				id.innerHTML = object2.clients[i].id;
 				fullname.innerHTML = object2.clients[i].firstName+" "+object2.clients[i].lastName;
 				phone.innerHTML = object2.clients[i].phone;
-				actions.innerHTML="<a onclick='Util.fila("+numfila+");'  href='edit_client.html'><img  id='editar' src='edit.png'/> </a> <a onclick='Util.fila("+numfila+");' href='delete_client.html'><img  src='delete.png'/> </a>";
-				numfila++;
-			}
+				actions.innerHTML="<a onclick='Util.fila("+i+");'  href='edit_client.html'><img  id='editar' src='edit.png'/> </a> <a onclick='Util.fila("+i+");' href='delete_client.html'><img  src='delete.png'/> </a>";				
 		};
 	}
 
