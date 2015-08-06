@@ -45,36 +45,52 @@ var Invoice = Invoice || {
 	},
 	vereliminar: function()
 	{
-		if(localStorage.getItem('UserInline')!='Administrador')
+		if(localStorage.getItem('UserInline')==''||localStorage.getItem('UserInline')==null)
 		{
-			var elemento = document.getElementById("user_v");
-			elemento.style.display = 'none';	
-		}	
-		var objetoSPAN = document.getElementById("userline");
-		objetoSPAN.innerHTML = localStorage.getItem('UserInline');
-		var i = parseInt(localStorage.getItem('fila'));
-		var object2 = JSON.parse(localStorage.getItem('inv'));
-		var objetoSPAN = document.getElementById("client_delete");
-		objetoSPAN.innerHTML = object2.Invoices[i].client+'  ?';
+			window.location = ("login.html"); 
+			return false;
+		}
+		else
+		{
+			if(localStorage.getItem('UserInline')!='Administrador')
+			{
+				var elemento = document.getElementById("user_v");
+				elemento.style.display = 'none';	
+			}	
+			var objetoSPAN = document.getElementById("userline");
+			objetoSPAN.innerHTML = localStorage.getItem('UserInline');
+			var i = parseInt(localStorage.getItem('fila'));
+			var object2 = JSON.parse(localStorage.getItem('inv'));
+			var objetoSPAN = document.getElementById("client_delete");
+			objetoSPAN.innerHTML = object2.Invoices[i].client+'  ?';
+		}
 	},
 	usuarioline: function()
 	{
-		if(localStorage.getItem('UserInline')!='Administrador')
+		if(localStorage.getItem('UserInline')==''||localStorage.getItem('UserInline')==null)
 		{
-			var elemento = document.getElementById("user_v");
-			elemento.style.display = 'none';	
-		}	
-		var objetoSPAN = document.getElementById("userline");
-		objetoSPAN.innerHTML = localStorage.getItem('UserInline');
-		if (localStorage.getItem('Client')!=null || localStorage.getItem('Client')!="") 
-		{    
-			var object2 = JSON.parse(localStorage.getItem('Client'));
-			var options = '';
-			for (var i = 0; i < object2.clients.length; i++) {
+			window.location = ("login.html"); 
+			return false;
+		}
+		else
+		{
+			if(localStorage.getItem('UserInline')!='Administrador')
+			{
+				var elemento = document.getElementById("user_v");
+				elemento.style.display = 'none';	
+			}	
+			var objetoSPAN = document.getElementById("userline");
+			objetoSPAN.innerHTML = localStorage.getItem('UserInline');
+			if (localStorage.getItem('Client')!=null || localStorage.getItem('Client')!="") 
+			{    
+				var object2 = JSON.parse(localStorage.getItem('Client'));
+				var options = '';
+				for (var i = 0; i < object2.clients.length; i++) {
 					options += '<option value="'+object2.clients[i].firstName+' '+object2.clients[i].lastName+'" />';
 					document.getElementById('clientes').innerHTML = options;
-			};
-		}   
+				};
+			}   
+		}
 	},
 	updateInvoice: function()
 	{
@@ -92,54 +108,73 @@ var Invoice = Invoice || {
 	},
 	llenarUpdate: function()
 	{
-		if(localStorage.getItem('UserInline')!='Administrador')
+		if(localStorage.getItem('UserInline')==''||localStorage.getItem('UserInline')==null)
 		{
-			var elemento = document.getElementById("user_v");
-			elemento.style.display = 'none';	
-		}	
-		var objetoSPAN = document.getElementById("userline");
-		objetoSPAN.innerHTML = localStorage.getItem('UserInline');
-		var i = parseInt(localStorage.getItem('fila'));
-		var object2 = JSON.parse(localStorage.getItem('inv'));		
-		document.getElementById('first_name').value=object2.Invoices[i].client;
-		document.getElementById('description_invoice').value=object2.Invoices[i].descript;
-		document.getElementById('mount_invoice').value=object2.Invoices[i].mount;
-
-	},
-	llenarInvoice: function()
-	{
-		if(localStorage.getItem('UserInline')!='Administrador')
-		{
-			var elemento = document.getElementById("user_v");
-			elemento.style.display = 'none';	
-		}	
-		var objetoSPAN = document.getElementById("userline");
-		objetoSPAN.innerHTML = localStorage.getItem('UserInline');
-		if (localStorage.getItem('inv')==null || localStorage.getItem('inv')=="") 
-		{
-		  Materialize.toast('No hay Invoices Guardados!', 4500, 'rounded');
+			window.location = ("login.html"); 
+			return false;
 		}
 		else
 		{
-			var object2 = JSON.parse(localStorage.getItem('inv'));
-			for (var i = 0; i < object2.Invoices.length; i++) {
-				if(object2.Invoices[i]!=null)
-				{
-					var tbl = document.getElementById('table_invoices');
-					var lastRow = tbl.rows.length;
-					var row = tbl.insertRow(lastRow);
-					var id = row.insertCell(0);
-					var client = row.insertCell(1);
-					var description = row.insertCell(2);
-					var mount = row.insertCell(3);
-					var actions = row.insertCell(4);
-					id.innerHTML = i;
-					client.innerHTML = object2.Invoices[i].client;
-					description.innerHTML= object2.Invoices[i].descript;
-					mount.innerHTML= object2.Invoices[i].mount;
-					actions.innerHTML="<a onclick='Invoice.fila("+i+");'  href='edit_invoice.html'><img  id='editar' src='edit.png'/> </a> <a onclick='Invoice.fila("+i+");' href='delete_invoice.html'><img  src='delete.png'/> </a>";					
-				}
-			};
+			if(localStorage.getItem('UserInline')!='Administrador')
+			{
+				var elemento = document.getElementById("user_v");
+				elemento.style.display = 'none';	
+			}	
+			var objetoSPAN = document.getElementById("userline");
+			objetoSPAN.innerHTML = localStorage.getItem('UserInline');
+			var i = parseInt(localStorage.getItem('fila'));
+			var object2 = JSON.parse(localStorage.getItem('inv'));		
+			document.getElementById('first_name').value=object2.Invoices[i].client;
+			document.getElementById('description_invoice').value=object2.Invoices[i].descript;
+			document.getElementById('mount_invoice').value=object2.Invoices[i].mount;
+		}
+	},
+	cerrarsecion: function()
+	{
+		localStorage.setItem('UserInline', '');
+	},
+	llenarInvoice: function()
+	{
+		if(localStorage.getItem('UserInline')==''||localStorage.getItem('UserInline')==null)
+		{
+			window.location = ("login.html"); 
+			return false;
+		}
+		else
+		{
+			if(localStorage.getItem('UserInline')!='Administrador')
+			{
+				var elemento = document.getElementById("user_v");
+				elemento.style.display = 'none';	
+			}	
+			var objetoSPAN = document.getElementById("userline");
+			objetoSPAN.innerHTML = localStorage.getItem('UserInline');
+			if (localStorage.getItem('inv')==null || localStorage.getItem('inv')=="") 
+			{
+				Materialize.toast('No hay Invoices Guardados!', 4500, 'rounded');
+			}
+			else
+			{
+				var object2 = JSON.parse(localStorage.getItem('inv'));
+				for (var i = 0; i < object2.Invoices.length; i++) {
+					if(object2.Invoices[i]!=null)
+					{
+						var tbl = document.getElementById('table_invoices');
+						var lastRow = tbl.rows.length;
+						var row = tbl.insertRow(lastRow);
+						var id = row.insertCell(0);
+						var client = row.insertCell(1);
+						var description = row.insertCell(2);
+						var mount = row.insertCell(3);
+						var actions = row.insertCell(4);
+						id.innerHTML = i;
+						client.innerHTML = object2.Invoices[i].client;
+						description.innerHTML= object2.Invoices[i].descript;
+						mount.innerHTML= object2.Invoices[i].mount;
+						actions.innerHTML="<a onclick='Invoice.fila("+i+");'  href='edit_invoice.html'><img  id='editar' src='edit.png'/> </a> <a onclick='Invoice.fila("+i+");' href='delete_invoice.html'><img  src='delete.png'/> </a>";					
+					}
+				};
+			}
 		}
 
 	}

@@ -29,7 +29,7 @@ var Usuario = Usuario || {
 	}
 	else
 	{		
-		  Materialize.toast('Las contrase;as no coinciden!', 4500, 'rounded');
+		Materialize.toast('Las contrase;as no coinciden!', 4500, 'rounded');
 	}
 },	
 deleteClient: function()
@@ -55,23 +55,39 @@ deleteClient: function()
 	},
 	vereliminar: function()
 	{
-		Usuario.usuarioline();
-		var i = parseInt(localStorage.getItem('fila'));
-		var object2 = JSON.parse(localStorage.getItem('User'));
-		var objetoSPAN = document.getElementById("client_delete");
-		objetoSPAN.innerHTML = object2.User[i].fullname+'  ?'; 
+		if(localStorage.getItem('UserInline')==''||localStorage.getItem('UserInline')==null)
+		{
+			window.location = ("login.html"); 
+			return false;
+		}
+		else
+		{
+			Usuario.usuarioline();
+			var i = parseInt(localStorage.getItem('fila'));
+			var object2 = JSON.parse(localStorage.getItem('User'));
+			var objetoSPAN = document.getElementById("client_delete");
+			objetoSPAN.innerHTML = object2.User[i].fullname+'  ?'; 
+		}
 		
 	},
 	
 	usuarioline: function()
 	{
-		if(localStorage.getItem('UserInline')!='Administrador')
+		if(localStorage.getItem('UserInline')==''||localStorage.getItem('UserInline')==null)
 		{
-			var elemento = document.getElementById("user_v");
-			elemento.style.display = 'none';	
-		}	
-		var objetoSPAN = document.getElementById("userline");
-		objetoSPAN.innerHTML = localStorage.getItem('UserInline');; 		
+			window.location = ("login.html"); 
+			return false;
+		}
+		else
+		{
+			if(localStorage.getItem('UserInline')!='Administrador')
+			{
+				var elemento = document.getElementById("user_v");
+				elemento.style.display = 'none';	
+			}	
+			var objetoSPAN = document.getElementById("userline");
+			objetoSPAN.innerHTML = localStorage.getItem('UserInline');
+		}		
 	},
 	updateUser: function()
 	{	
@@ -82,16 +98,27 @@ deleteClient: function()
 		object2.User[i].username=document.getElementById('name_user').value;
 		localStorage.setItem('User', JSON.stringify(object2));  
 	},
+	cerrarsecion: function()
+	{
+		localStorage.setItem('UserInline', '');
+	},
 	llenarUser: function()
 	{
-		Usuario.usuarioline();
-		if (localStorage.getItem('User')==null || localStorage.getItem('User')=="") 
+		if(localStorage.getItem('UserInline')==''||localStorage.getItem('UserInline')==null)
 		{
-			  Materialize.toast('No hay Usuarios  Guardados!', 4500, 'rounded');
+			window.location = ("login.html"); 
+			return false;
 		}
 		else
 		{
-			var object2 = JSON.parse(localStorage.getItem('User'));
+			Usuario.usuarioline();
+			if (localStorage.getItem('User')==null || localStorage.getItem('User')=="") 
+			{
+				Materialize.toast('No hay Usuarios  Guardados!', 4500, 'rounded');
+			}
+			else
+			{
+				var object2 = JSON.parse(localStorage.getItem('User'));
 		//ciclo para imprimir todo lo guardado
 		for (var i = 0; i < object2.User.length; i++) {
 			var tbl = document.getElementById('table_user');
@@ -108,18 +135,27 @@ deleteClient: function()
 		};
 
 	}
+}
 },
 fila: function(x){
 	localStorage.setItem('fila', x);
 },
 llenarUpdate: function()
 {
-	Usuario.usuarioline();
-	var i = parseInt(localStorage.getItem('fila'));
-	var object2 = JSON.parse(localStorage.getItem('User'));
-	document.getElementById('user_name').value=object2.User[i].fullname;
-	document.getElementById('name_user').value=object2.User[i].username;
-	document.getElementById('pasword').value=object2.User[i].pasword;
-	document.getElementById('pasword_repeat').value=object2.User[i].pasword;
+	if(localStorage.getItem('UserInline')==''||localStorage.getItem('UserInline')==null)
+	{
+		window.location = ("login.html"); 
+		return false;
+	}
+	else
+	{
+		Usuario.usuarioline();
+		var i = parseInt(localStorage.getItem('fila'));
+		var object2 = JSON.parse(localStorage.getItem('User'));
+		document.getElementById('user_name').value=object2.User[i].fullname;
+		document.getElementById('name_user').value=object2.User[i].username;
+		document.getElementById('pasword').value=object2.User[i].pasword;
+		document.getElementById('pasword_repeat').value=object2.User[i].pasword;
+	}
 }
 };

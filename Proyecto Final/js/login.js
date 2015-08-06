@@ -18,18 +18,26 @@ var Login = Login || {
 				}
 			}
 		};
-		alert('Contraseña inválida');
+		Materialize.toast('Contraseña Invalida!', 4500, 'rounded');
 	},
 	usuarioline: function()
 	{
-		var objetoSPAN = document.getElementById("userline");
-		objetoSPAN.innerHTML = localStorage.getItem('UserInline');
-		var objetoH = document.getElementById("welcome");
-		objetoH.innerHTML = 'Welcome '+localStorage.getItem('UserInline');
-		if(localStorage.getItem('UserInline')!='Administrador')
+		if(localStorage.getItem('UserInline')==''||localStorage.getItem('UserInline')==null)
 		{
-			var elemento = document.getElementById("user_v");
-			elemento.style.display = 'none';	
-		}	
+			window.location = ("login.html"); 
+			return false;
+		}
+		else
+		{
+			var objetoSPAN = document.getElementById("userline");
+			objetoSPAN.innerHTML = localStorage.getItem('UserInline');
+			var objetoH = document.getElementById("welcome");
+			objetoH.innerHTML = 'Welcome '+localStorage.getItem('UserInline');
+			if(localStorage.getItem('UserInline')!='Administrador')
+			{
+				var elemento = document.getElementById("user_v");
+				elemento.style.display = 'none';	
+			}	
+		}
 	}
 };

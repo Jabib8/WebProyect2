@@ -44,21 +44,37 @@ var Chamba = Chamba || {
 	},
 	vereliminar: function()
 	{
-		Chamba.usuarioline();
-		var i = parseInt(localStorage.getItem('fila'));
-		var object2 = JSON.parse(localStorage.getItem('ch'));
-		var objetoSPAN = document.getElementById("client_delete");
-		objetoSPAN.innerHTML = object2.Chambas[i].client+'  ?'; 		
+		if(localStorage.getItem('UserInline')==''||localStorage.getItem('UserInline')==null)
+		{
+			window.location = ("login.html"); 
+			return false;
+		}
+		else
+		{
+			Chamba.usuarioline();
+			var i = parseInt(localStorage.getItem('fila'));
+			var object2 = JSON.parse(localStorage.getItem('ch'));
+			var objetoSPAN = document.getElementById("client_delete");
+			objetoSPAN.innerHTML = object2.Chambas[i].client+'  ?'; 
+		}		
 	},
 	usuarioline: function()
 	{
-		if(localStorage.getItem('UserInline')!='Administrador')
+		if(localStorage.getItem('UserInline')==''||localStorage.getItem('UserInline')==null)
 		{
-			var elemento = document.getElementById("user_v");
-			elemento.style.display = 'none';	
-		}	
-		var objetoSPAN = document.getElementById("userline");
-		objetoSPAN.innerHTML = localStorage.getItem('UserInline');; 		
+			window.location = ("login.html"); 
+			return false;
+		}
+		else
+		{
+			if(localStorage.getItem('UserInline')!='Administrador')
+			{
+				var elemento = document.getElementById("user_v");
+				elemento.style.display = 'none';	
+			}	
+			var objetoSPAN = document.getElementById("userline");
+			objetoSPAN.innerHTML = localStorage.getItem('UserInline');
+		}		
 	},
 	updateChamba: function()
 	{
@@ -76,25 +92,44 @@ var Chamba = Chamba || {
 	},
 	llenarUpdate: function()
 	{
-		Chamba.usuarioline();
-		var i = parseInt(localStorage.getItem('fila'));
-		var object2 = JSON.parse(localStorage.getItem('ch'));
-		document.getElementById('id_chamba').value =  object2.Chambas[i].id;
-		document.getElementById('client_chamba').value = object2.Chambas[i].client;
-		document.getElementById('descripcion_chamba').value = object2.Chambas[i].descript;
-		document.getElementById('date_chamba').value = object2.Chambas[i].date;
-		document.getElementById('notes_chamba').value= object2.Chambas[i].notes;
-	},
-	llenarChamba: function()
-	{
-		Chamba.usuarioline();
-		if (localStorage.getItem('ch')==null || localStorage.getItem('ch')=="") 
+		if(localStorage.getItem('UserInline')==''||localStorage.getItem('UserInline')==null)
 		{
-		        Materialize.toast('No hay Chambas Guardadas!', 4500, 'rounded');
+			window.location = ("login.html"); 
+			return false;
 		}
 		else
 		{
+			Chamba.usuarioline();
+			var i = parseInt(localStorage.getItem('fila'));
 			var object2 = JSON.parse(localStorage.getItem('ch'));
+			document.getElementById('id_chamba').value =  object2.Chambas[i].id;
+			document.getElementById('client_chamba').value = object2.Chambas[i].client;
+			document.getElementById('descripcion_chamba').value = object2.Chambas[i].descript;
+			document.getElementById('date_chamba').value = object2.Chambas[i].date;
+			document.getElementById('notes_chamba').value= object2.Chambas[i].notes;
+		}
+	},
+	cerrarsecion: function()
+	{
+		localStorage.setItem('UserInline', '');
+	},
+	llenarChamba: function()
+	{
+		if(localStorage.getItem('UserInline')==''||localStorage.getItem('UserInline')==null)
+		{
+			window.location = ("login.html"); 
+			return false;
+		}
+		else
+		{
+			Chamba.usuarioline();
+			if (localStorage.getItem('ch')==null || localStorage.getItem('ch')=="") 
+			{
+				Materialize.toast('No hay Chambas Guardadas!', 4500, 'rounded');
+			}
+			else
+			{
+				var object2 = JSON.parse(localStorage.getItem('ch'));
 		//ciclo para imprimir todo lo guardado
 		for (var i = 0; i < object2.Chambas.length; i++) {
 			var tbl = document.getElementById('table_chamba');
@@ -113,8 +148,8 @@ var Chamba = Chamba || {
 			notes.innerHTML= object2.Chambas[i].notes;
 			actions.innerHTML="<a onclick='Chamba.fila("+i+");'  href='edit_chamba.html'><img  id='editar' src='edit.png'/> </a> <a onclick='Chamba.fila("+i+");' href='delete_chambas.html'><img  src='delete.png'/> </a>";							
 		};
-
 	}
+}
 }
 
 };

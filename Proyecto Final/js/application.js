@@ -46,21 +46,37 @@ var Util = Util || {
 	},
 	vereliminar: function()
 	{
-		Util.usuarioline();
-		var i = parseInt(localStorage.getItem('fila'));
-		var object2 = JSON.parse(localStorage.getItem('Client'));
-		var objetoSPAN = document.getElementById("client_delete");
-		objetoSPAN.innerHTML = object2.clients[i].firstName+' '+object2.clients[i].lastName+'  ?';
+		if(localStorage.getItem('UserInline')==''||localStorage.getItem('UserInline')==null)
+		{
+			window.location = ("login.html"); 
+			return false;
+		}
+		else
+		{
+			Util.usuarioline();
+			var i = parseInt(localStorage.getItem('fila'));
+			var object2 = JSON.parse(localStorage.getItem('Client'));
+			var objetoSPAN = document.getElementById("client_delete");
+			objetoSPAN.innerHTML = object2.clients[i].firstName+' '+object2.clients[i].lastName+'  ?';
+		}
 	},
 	usuarioline: function()
 	{
+		if(localStorage.getItem('UserInline')==''||localStorage.getItem('UserInline')==null)
+		{
+			window.location = ("login.html"); 
+			return false;
+		}
+		else
+		{
 		if(localStorage.getItem('UserInline')!='Administrador')
 		{
 			var elemento = document.getElementById("user_v");
 			elemento.style.display = 'none';	
 		}	
 		var objetoSPAN = document.getElementById("userline");
-		objetoSPAN.innerHTML = localStorage.getItem('UserInline');; 		
+		objetoSPAN.innerHTML = localStorage.getItem('UserInline');
+		} 		
 	},
 	updateInvoice: function()
 	{
@@ -77,39 +93,59 @@ var Util = Util || {
 	},
 	llenarUpdate: function()
 	{
-		Util.usuarioline();
-		var i = parseInt(localStorage.getItem('fila'));
-		var object2 = JSON.parse(localStorage.getItem('Client'));
-		document.getElementById('first_name').value=object2.clients[i].firstName;
-		document.getElementById('last_name').value=object2.clients[i].lastName;
-		document.getElementById('id').value=object2.clients[i].id;
-		document.getElementById('phone').value=object2.clients[i].phone;
-	},
-	llenartabla: function()
-	{
-		Util.usuarioline();
-		if (localStorage.getItem('Client')==null || localStorage.getItem('Client')=="") 
+		if(localStorage.getItem('UserInline')==''||localStorage.getItem('UserInline')==null)
 		{
-			  Materialize.toast('No hay elementos guardados!', 4500, 'rounded');
+			window.location = ("login.html"); 
+			return false;
 		}
 		else
 		{
+			Util.usuarioline();
+			var i = parseInt(localStorage.getItem('fila'));
 			var object2 = JSON.parse(localStorage.getItem('Client'));
+			document.getElementById('first_name').value=object2.clients[i].firstName;
+			document.getElementById('last_name').value=object2.clients[i].lastName;
+			document.getElementById('id').value=object2.clients[i].id;
+			document.getElementById('phone').value=object2.clients[i].phone;
+		}
+	},
+	cerrarsecion: function()
+	{
+		localStorage.setItem('UserInline', '');
+	},
+	llenartabla: function()
+	{
+		if(localStorage.getItem('UserInline')==''||localStorage.getItem('UserInline')==null)
+		{
+			window.location = ("login.html"); 
+			return false;
+		}
+		else
+		{
+			Util.usuarioline();
+			if (localStorage.getItem('Client')==null || localStorage.getItem('Client')=="") 
+			{
+				Materialize.toast('No hay Clientes Guardados!', 4500, 'rounded');
+			}
+			else
+			{
+				var object2 = JSON.parse(localStorage.getItem('Client'));
 		//ciclo para imprimir todo lo guardado
 		for (var i = 0; i < object2.clients.length; i++) {
-				var tbl = document.getElementById('tableclient');
-				var lastRow = tbl.rows.length;
-				var row = tbl.insertRow(lastRow);
-				var id = row.insertCell(0);
-				var fullname = row.insertCell(1);
-				var phone = row.insertCell(2);
-				var actions = row.insertCell(3);
-				id.innerHTML = object2.clients[i].id;
-				fullname.innerHTML = object2.clients[i].firstName+" "+object2.clients[i].lastName;
-				phone.innerHTML = object2.clients[i].phone;
-				actions.innerHTML="<a onclick='Util.fila("+i+");'  href='edit_client.html'><img  id='editar' src='edit.png'/> </a> <a onclick='Util.fila("+i+");' href='delete_client.html'><img  src='delete.png'/> </a>";				
+			var tbl = document.getElementById('tableclient');
+			var lastRow = tbl.rows.length;
+			var row = tbl.insertRow(lastRow);
+			var id = row.insertCell(0);
+			var fullname = row.insertCell(1);
+			var phone = row.insertCell(2);
+			var actions = row.insertCell(3);
+			id.innerHTML = object2.clients[i].id;
+			fullname.innerHTML = object2.clients[i].firstName+" "+object2.clients[i].lastName;
+			phone.innerHTML = object2.clients[i].phone;
+			actions.innerHTML="<a onclick='Util.fila("+i+");'  href='edit_client.html'><img  id='editar' src='edit.png'/> </a> <a onclick='Util.fila("+i+");' href='delete_client.html'><img  src='delete.png'/> </a>";				
 		};
 	}
+}
 
 }
 };
