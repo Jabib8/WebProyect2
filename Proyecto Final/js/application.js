@@ -69,13 +69,13 @@ var Util = Util || {
 		}
 		else
 		{
-		if(localStorage.getItem('UserInline')!='Administrador')
-		{
-			var elemento = document.getElementById("user_v");
-			elemento.style.display = 'none';	
-		}	
-		var objetoSPAN = document.getElementById("userline");
-		objetoSPAN.innerHTML = localStorage.getItem('UserInline');
+			if(localStorage.getItem('UserInline')!='Administrador')
+			{
+				var elemento = document.getElementById("user_v");
+				elemento.style.display = 'none';	
+			}	
+			var objetoSPAN = document.getElementById("userline");
+			objetoSPAN.innerHTML = localStorage.getItem('UserInline');
 		} 		
 	},
 	updateInvoice: function()
@@ -88,7 +88,12 @@ var Util = Util || {
 		object2.clients[i].phone=document.getElementById('phone').value; 
 		localStorage.setItem('Client', JSON.stringify(object2));
 	},
-	fila: function(x){
+	fila: function(x){		
+		localStorage.setItem('fila', x);
+	},
+	getfila: function()	{
+		var selectBox = document.getElementById("select");
+		var x = selectBox.options[selectBox.selectedIndex].value;
 		localStorage.setItem('fila', x);
 	},
 	llenarUpdate: function()
@@ -130,6 +135,8 @@ var Util = Util || {
 			else
 			{
 				var object2 = JSON.parse(localStorage.getItem('Client'));
+				var options = '';
+				var select = document.getElementById("select");
 		//ciclo para imprimir todo lo guardado
 		for (var i = 0; i < object2.clients.length; i++) {
 			var tbl = document.getElementById('tableclient');
@@ -142,7 +149,12 @@ var Util = Util || {
 			id.innerHTML = object2.clients[i].id;
 			fullname.innerHTML = object2.clients[i].firstName+" "+object2.clients[i].lastName;
 			phone.innerHTML = object2.clients[i].phone;
-			actions.innerHTML="<a onclick='Util.fila("+i+");'  href='edit_client.html'><img  id='editar' src='edit.png'/> </a> <a onclick='Util.fila("+i+");' href='delete_client.html'><img  src='delete.png'/> </a>";				
+			actions.innerHTML="<a onclick='Util.fila("+i+");'  href='edit_client.html'><img  id='editar' src='edit.png'/> </a> <a onclick='Util.fila("+i+");' href='delete_client.html'><img  src='delete.png'/> </a>";						//llenar div
+			//llenar select
+			var opt = document.createElement('option');
+			opt.value = i;
+			opt.innerHTML = 'ID: '+object2.clients[i].id+' Full name: '+object2.clients[i].firstName+" "+object2.clients[i].lastName +" Phone: "+object2.clients[i].phone;
+			select.appendChild(opt);
 		};
 	}
 }

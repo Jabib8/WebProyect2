@@ -119,6 +119,7 @@ deleteClient: function()
 			else
 			{
 				var object2 = JSON.parse(localStorage.getItem('User'));
+				var select = document.getElementById("select");
 		//ciclo para imprimir todo lo guardado
 		for (var i = 0; i < object2.User.length; i++) {
 			var tbl = document.getElementById('table_user');
@@ -132,12 +133,22 @@ deleteClient: function()
 			username.innerHTML = object2.User[i].username;
 			pasword.innerHTML= object2.User[i].pasword;			
 			actions.innerHTML="<a onclick='Usuario.fila("+i+");'  href='edit_user.html'><img  id='editar' src='edit.png'/> </a> <a onclick='Usuario.fila("+i+");' href='delete_user.html'><img  src='delete.png'/> </a>";				
+			//llenar select
+			var opt = document.createElement('option');
+			opt.value = i;
+			opt.innerHTML = 'Full name: '+object2.User[i].fullname+" Username: "+object2.User[i].username +" pasword: "+object2.User[i].pasword;
+			select.appendChild(opt);
 		};
 
 	}
 }
 },
 fila: function(x){
+	localStorage.setItem('fila', x);
+},
+getfila: function()	{
+	var selectBox = document.getElementById("select");
+	var x = selectBox.options[selectBox.selectedIndex].value;
 	localStorage.setItem('fila', x);
 },
 llenarUpdate: function()

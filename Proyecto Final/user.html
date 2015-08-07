@@ -34,14 +34,9 @@
   </button></a>
 
 </div>
-<script language="JavaScript">
-
-  function coordenadas(x){
-    var mensaje = 'La celda está situada en la fila '+x;
-    return mensaje;
-  }
-</script>
-
+<select class="browser-default" id="select" onchange="Usuario.getfila();" >
+      <option value="" disabled selected>Select user</option>
+    </select>
 <table  class="centered hoverable striped bordered" id="table_user">
   <tr style="background-color: #FF8C00" >
     <td ><strong>FULL NAME</strong></td>

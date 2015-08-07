@@ -1,38 +1,36 @@
 <!DOCTYPE HTML> 
 <html lang="es"> 
 <head>
- <title>clients</title>
+ <title>Clients</title>
  <!-- External CSS -->
  <meta charset="utf-8">
  <link rel="stylesheet" href="./template.css" type="text/css" media="all" />
  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
  <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
 </head> 
 
 <body onload="Util.llenartabla()"> 
-<ul id="dropdown1" class="dropdown-content">
-  <li class="active"><a href="clients.html">Clients</a></li>
-  <li><a href="chambas.html">Chambas</a></li>
-  <li><a href="invoices.html">Invoices</a></li>
-  <li id="user_v"><a href="user.html">User</a></li> 
-</ul>
+  <ul id="dropdown1" class="dropdown-content">
+    <li class="active"><a href="clients.html">Clients</a></li>
+    <li><a href="chambas.html">Chambas</a></li>
+    <li><a href="invoices.html">Invoices</a></li>
+    <li id="user_v"><a href="user.html">User</a></li> 
+  </ul>
   <nav>
    <div class="nav-wrapper">
      <!--<a href="dashboard.html" class="brand-logo center">Home</a>-->
      <a href="dashboard.html" class="brand-logo center">HOME</a>
      <ul id="nav-mobile" class="left hide-down">
-     <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Menu<i class="material-icons right">arrow_drop_down</i></a></li>      
-      <li id="userline"><a>User</a></li> 
-      <li id="userline"><i class="material-icons">person_pin</i></li>
-      <li><a onclick="Util.cerrarsecion();" href="login.html"><i class="material-icons">power_settings_new</i></a></li>
-    </ul>
-  </div>
-</nav>
-
-
-<div class="divSubtitulo" >
-
+       <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Menu<i class="material-icons right">arrow_drop_down</i></a></li>      
+       <li id="userline"><a>User</a></li> 
+       <li id="userline"><i class="material-icons">person_pin</i></li>
+       <li><a onclick="Util.cerrarsecion();" href="login.html"><i class="material-icons">power_settings_new</i></a></li>
+     </ul>
+   </div>
+ </nav>
+ <div class="divSubtitulo" >
   <img class="divimg" src="images\user.png" /> 
   <span class="subtitulo flow-text">
    CLIENTS
@@ -40,9 +38,9 @@
  <a href="new_client.html"><button  class="divbtn waves-effect waves-light btn">
   NEW CLIENT
 </button></a>
-
-</div>
-
+    <select class="browser-default" id="select" onchange="Util.getfila();" >
+      <option value="" disabled selected>Select client</option>
+    </select>
 <table id="tableclient"  class="centered hoverable striped bordered"  >
   <tr style="background-color: #FF8C00">
     <td ><strong>ID</strong></td>

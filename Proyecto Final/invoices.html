@@ -33,9 +33,10 @@
  <a href="new_invoice.html"><button  class="divbtn waves-effect waves-light btn">
   New Invoice
 </button></a>
-
 </div>
-
+<select class="browser-default" id="select" onchange="Invoice.getfila();" >
+      <option value="" disabled selected>Select chamba</option>
+    </select>
 <table  id="table_invoices"  class="centered hoverable striped bordered" >
   <tr style="background-color: #FF8C00" >
     <td ><strong>INVOICE #</strong></td>

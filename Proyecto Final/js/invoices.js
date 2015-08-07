@@ -106,6 +106,11 @@ var Invoice = Invoice || {
 	fila: function(x){
 		localStorage.setItem('fila', x);
 	},
+	getfila: function()	{
+		var selectBox = document.getElementById("select");
+		var x = selectBox.options[selectBox.selectedIndex].value;
+		localStorage.setItem('fila', x);
+	},
 	llenarUpdate: function()
 	{
 		if(localStorage.getItem('UserInline')==''||localStorage.getItem('UserInline')==null)
@@ -155,6 +160,7 @@ var Invoice = Invoice || {
 			}
 			else
 			{
+				var select = document.getElementById("select");
 				var object2 = JSON.parse(localStorage.getItem('inv'));
 				for (var i = 0; i < object2.Invoices.length; i++) {
 					if(object2.Invoices[i]!=null)
@@ -172,6 +178,11 @@ var Invoice = Invoice || {
 						description.innerHTML= object2.Invoices[i].descript;
 						mount.innerHTML= object2.Invoices[i].mount;
 						actions.innerHTML="<a onclick='Invoice.fila("+i+");'  href='edit_invoice.html'><img  id='editar' src='edit.png'/> </a> <a onclick='Invoice.fila("+i+");' href='delete_invoice.html'><img  src='delete.png'/> </a>";					
+						//llenar select
+						var opt = document.createElement('option');
+						opt.value = i;
+						opt.innerHTML = 'Client: '+object2.Invoices[i].client+" Descript: "+object2.Invoices[i].descript+" Mount: "+object2.Invoices[i].mount;
+						select.appendChild(opt);
 					}
 				};
 			}

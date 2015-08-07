@@ -90,6 +90,11 @@ var Chamba = Chamba || {
 	fila: function(x){
 		localStorage.setItem('fila', x);
 	},
+	getfila: function()	{
+	var selectBox = document.getElementById("select");
+	var x = selectBox.options[selectBox.selectedIndex].value;
+	localStorage.setItem('fila', x);
+},
 	llenarUpdate: function()
 	{
 		if(localStorage.getItem('UserInline')==''||localStorage.getItem('UserInline')==null)
@@ -130,6 +135,7 @@ var Chamba = Chamba || {
 			else
 			{
 				var object2 = JSON.parse(localStorage.getItem('ch'));
+				var select = document.getElementById("select");
 		//ciclo para imprimir todo lo guardado
 		for (var i = 0; i < object2.Chambas.length; i++) {
 			var tbl = document.getElementById('table_chamba');
@@ -147,6 +153,11 @@ var Chamba = Chamba || {
 			date.innerHTML= object2.Chambas[i].date;
 			notes.innerHTML= object2.Chambas[i].notes;
 			actions.innerHTML="<a onclick='Chamba.fila("+i+");'  href='edit_chamba.html'><img  id='editar' src='edit.png'/> </a> <a onclick='Chamba.fila("+i+");' href='delete_chambas.html'><img  src='delete.png'/> </a>";							
+			//llenar select
+			var opt = document.createElement('option');
+			opt.value = i;
+			opt.innerHTML =" ID: "+object2.Chambas[i].id +' Name: '+object2.Chambas[i].client+" Descript: "+object2.Chambas[i].descript +'\n'+" Date: "+object2.Chambas[i].date+" Note: "+object2.Chambas[i].notes;
+			select.appendChild(opt);
 		};
 	}
 }
