@@ -10,19 +10,26 @@
 
 </head> 
 <body onload="Chamba.usuarioline();"> 
- <nav>
-   <div class="nav-wrapper">
-     <!--<a href="dashboard.html" class="brand-logo center">Home</a>-->
-     <ul id="nav-mobile" class="left hide-down">
-      <li><a href="clients.html">Client</a></li>
-      <li><a href="chambas.html">Chambas</a></li> 
-      <li><a href="invoices.html">Invoices</a></li>
-      <li id="user_v"><a href="user.html">User</a></li> 
-      <li id="userline"><a>User</a></li> 
-      <li><a onclick="Chamba.cerrarsecion();" href="login.html"><i class="material-icons">person_pin</i></a></li>
-    </ul>
-  </div>
-</nav>
+ <script type="text/javascript" src="js/materialize2.min.js"></script>
+ <div id="menu">
+  <ul id="slide-out" class="side-nav full">
+    <li><a onclick="cli()">Clients</a></li>
+    <li><a onclick="cha()">Chambas</a></li>
+    <li><a onclick="invo()">Invoices</a></li>
+    <li id="user_v"><a onclick="use()">User</a></li>
+  </ul>
+
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="dashboard.html">Home</a></li>
+    <li><a  onclick="Util.cerrarsecion();" href="login.html">Log out</a></li>
+
+  </ul>
+  <a href="#" data-activates="slide-out" class="button-collapse"><i class=" material-icons">view_list</i></a>
+
+  <ul id="nav-mobile" class="right ">
+   <li><a id="userline" class="dropdown-button" href="#!" data-activates="dropdown1">como tal <i class="large material-icons right">arrow_drop_down</i></a></li> 
+ </ul>
+</div>
 <div class="progress">
       <div class="indeterminate"></div>
   </div>
@@ -37,35 +44,35 @@
 </button></a>
 </div>
 
-<fieldset class="flow-text" style=" margin-left: 20%;margin-right: 20%; border: none;">
+<fieldset class="flow-text" style=" margin-left: 5%;margin-right: 5%; border: none;">
   <div class="row">
     <form class="col s12">
-      <div class="row center-align">
-        <div class="input-field col s12">
+      <div class="container">
+        <div class="input-field col s11">
           <input  id="id_chamba" type="text" class="validate">
           <label for="first_name">ID</label>
         </div>
       </div>
-      <div class="row center-align">
-        <div class="input-field col s12">
+      <div class="container">
+        <div class="input-field col s11">
           <input  id="client_chamba" type="text" class="validate">
           <label for="first_name">Client</label>
         </div>
       </div>
-      <div class="row center-align">
-        <div class="input-field col s12">
+      <div class="container">
+        <div class="input-field col s11">
          <textarea id="descripcion_chamba" class="materialize-textarea"></textarea>
          <label for="textarea1">Description</label>
        </div>
      </div>
-     <div class="row center-align">
-      <div class="input col s12">
+     <div class="container">
+      <div class="input col s8">
         <input id="date_chamba" type="date" class="datepicker">
         <label for="date">Date</label>
       </div>
     </div>
-    <div class="row center-align">
-      <div class="input-field col s12">
+    <div class="container">
+      <div class="input-field col s8">
         <textarea id="notes_chamba" class="materialize-textarea"></textarea>
         <label for="textarea2">Notes</label>
       </div>

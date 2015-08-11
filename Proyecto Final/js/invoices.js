@@ -108,8 +108,26 @@ var Invoice = Invoice || {
 	},
 	getfila: function()	{
 		var selectBox = document.getElementById("select");
-		var x = selectBox.options[selectBox.selectedIndex].value;
-		localStorage.setItem('fila', x);
+		var i = selectBox.options[selectBox.selectedIndex].value;
+		localStorage.setItem('fila', i);
+		var objetoSPAN = document.getElementById("userline");
+		var object2 = JSON.parse(localStorage.getItem('inv'));
+		var tbl = document.getElementById('table');
+		if(tbl.rows.length==2)
+		{
+			document.getElementById("table").deleteRow(1);
+		}
+		var row = tbl.insertRow(1);
+		var id = row.insertCell(0);
+		var client = row.insertCell(1);
+		var description = row.insertCell(2);
+		var mount = row.insertCell(3);
+		var actions = row.insertCell(4);
+		id.innerHTML = i;
+		client.innerHTML = object2.Invoices[i].client;
+		description.innerHTML= object2.Invoices[i].descript;
+		mount.innerHTML= object2.Invoices[i].mount;
+		actions.innerHTML="<a href='edit_invoice.html'><img  id='editar' src='edit.png'/> </a> <a href='delete_invoice.html'><img  src='delete.png'/> </a>";
 	},
 	llenarUpdate: function()
 	{
@@ -132,6 +150,8 @@ var Invoice = Invoice || {
 			document.getElementById('first_name').value=object2.Invoices[i].client;
 			document.getElementById('description_invoice').value=object2.Invoices[i].descript;
 			document.getElementById('mount_invoice').value=object2.Invoices[i].mount;
+			
+
 		}
 	},
 	cerrarsecion: function()
@@ -190,3 +210,30 @@ var Invoice = Invoice || {
 
 	}
 };
+$('.button-collapse').sideNav({
+	menuWidth: 200,
+	closeOnClick: true
+}
+);
+function cli() 
+{
+	var pagina="clients.html"
+	location.href=pagina
+} 
+
+function cha() 
+{
+	var pagina="chambas.html"
+	location.href=pagina
+} 
+
+function invo() 
+{
+	var pagina="invoices.html"
+	location.href=pagina
+} 
+function use() 
+{
+	var pagina="user.html"
+	location.href=pagina
+} 

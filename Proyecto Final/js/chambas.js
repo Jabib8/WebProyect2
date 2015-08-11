@@ -91,10 +91,32 @@ var Chamba = Chamba || {
 		localStorage.setItem('fila', x);
 	},
 	getfila: function()	{
-	var selectBox = document.getElementById("select");
-	var x = selectBox.options[selectBox.selectedIndex].value;
-	localStorage.setItem('fila', x);
-},
+		var selectBox = document.getElementById("select");
+		var i = selectBox.options[selectBox.selectedIndex].value;
+		localStorage.setItem('fila', i);
+		var object2 = JSON.parse(localStorage.getItem('ch'));
+		var tbl = document.getElementById('table');
+		if(tbl.rows.length==2)
+		{
+			document.getElementById("table").deleteRow(1);
+		}
+		var tbl = document.getElementById('table');
+			var row = tbl.insertRow(1);
+			var id = row.insertCell(0);
+			var full = row.insertCell(1);
+			var description = row.insertCell(2);
+			var date = row.insertCell(3);
+			var notes = row.insertCell(4);
+			var actions = row.insertCell(5);
+			id.innerHTML = object2.Chambas[i].id;
+			full.innerHTML = object2.Chambas[i].client;
+			description.innerHTML= object2.Chambas[i].descript;
+			date.innerHTML= object2.Chambas[i].date;
+			notes.innerHTML= object2.Chambas[i].notes;
+		actions.innerHTML="<a href='edit_chamba.html'><img  id='editar' src='edit.png'/> </a> <a href='delete_chambas.html'><img  src='delete.png'/> </a>";
+		var elemento = document.getElementById("table");
+		elemento.style.display = 'block';
+	},
 	llenarUpdate: function()
 	{
 		if(localStorage.getItem('UserInline')==''||localStorage.getItem('UserInline')==null)
@@ -168,3 +190,30 @@ $('.datepicker').pickadate({
 	selectMonths: true,
 	selectYears: 15
 });
+$('.button-collapse').sideNav({
+	menuWidth: 200,
+	closeOnClick: true
+}
+);
+function cli() 
+{
+	var pagina="clients.html"
+	location.href=pagina
+} 
+
+function cha() 
+{
+	var pagina="chambas.html"
+	location.href=pagina
+} 
+
+function invo() 
+{
+	var pagina="invoices.html"
+	location.href=pagina
+} 
+function use() 
+{
+	var pagina="user.html"
+	location.href=pagina
+} 

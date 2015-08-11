@@ -62,20 +62,25 @@ var Util = Util || {
 	},
 	usuarioline: function()
 	{
+
 		if(localStorage.getItem('UserInline')==''||localStorage.getItem('UserInline')==null)
 		{
+
 			window.location = ("login.html"); 
 			return false;
 		}
 		else
-		{
+		{			
+
 			if(localStorage.getItem('UserInline')!='Administrador')
 			{
+
 				var elemento = document.getElementById("user_v");
-				elemento.style.display = 'none';	
+				elemento.style.display = 'none';
 			}	
-			var objetoSPAN = document.getElementById("userline");
+			var objetoSPAN = document.getElementById("userline");			
 			objetoSPAN.innerHTML = localStorage.getItem('UserInline');
+			
 		} 		
 	},
 	updateInvoice: function()
@@ -84,8 +89,8 @@ var Util = Util || {
 		var object2 = JSON.parse(localStorage.getItem('Client'));
 		object2.clients[i].firstName=document.getElementById('first_name').value;
 		object2.clients[i].lastName=document.getElementById('last_name').value;
-		object2.clients[i].id=document.getElementById('id').value;
-		object2.clients[i].phone=document.getElementById('phone').value; 
+		object2.clients[i].id=document.getElementById('id_client').value;
+		object2.clients[i].phone=document.getElementById('phone_client').value; 
 		localStorage.setItem('Client', JSON.stringify(object2));
 	},
 	fila: function(x){		
@@ -95,6 +100,18 @@ var Util = Util || {
 		var selectBox = document.getElementById("select");
 		var x = selectBox.options[selectBox.selectedIndex].value;
 		localStorage.setItem('fila', x);
+		var object2 = JSON.parse(localStorage.getItem('Client'));
+		var objetoSPAN = document.getElementById("id");
+			objetoSPAN.innerHTML = object2.clients[x].id;
+			var objetoSPAN = document.getElementById("full");
+			objetoSPAN.innerHTML = object2.clients[x].firstName+" "+object2.clients[x].lastName;
+			var objetoSPAN = document.getElementById("phone");
+			objetoSPAN.innerHTML = object2.clients[x].phone;
+			var objetoSPAN = document.getElementById("action");
+			objetoSPAN.innerHTML = "<a  href='edit_client.html'><img  id='editar' src='edit.png'/> </a> <a  href='delete_client.html'><img  src='delete.png'/> </a>";
+
+		
+		
 	},
 	llenarUpdate: function()
 	{
@@ -110,8 +127,8 @@ var Util = Util || {
 			var object2 = JSON.parse(localStorage.getItem('Client'));
 			document.getElementById('first_name').value=object2.clients[i].firstName;
 			document.getElementById('last_name').value=object2.clients[i].lastName;
-			document.getElementById('id').value=object2.clients[i].id;
-			document.getElementById('phone').value=object2.clients[i].phone;
+			document.getElementById('id_client').value=object2.clients[i].id;
+			document.getElementById('phone_client').value=object2.clients[i].phone;
 		}
 	},
 	cerrarsecion: function()
@@ -136,6 +153,7 @@ var Util = Util || {
 			{
 				var object2 = JSON.parse(localStorage.getItem('Client'));
 				var options = '';
+				//este es el id del select
 				var select = document.getElementById("select");
 		//ciclo para imprimir todo lo guardado
 		for (var i = 0; i < object2.clients.length; i++) {
@@ -153,7 +171,7 @@ var Util = Util || {
 			//llenar select
 			var opt = document.createElement('option');
 			opt.value = i;
-			opt.innerHTML = 'ID: '+object2.clients[i].id+' Full name: '+object2.clients[i].firstName+" "+object2.clients[i].lastName +" Phone: "+object2.clients[i].phone;
+			opt.innerHTML = object2.clients[i].id+' '+object2.clients[i].firstName+" "+object2.clients[i].lastName;
 			select.appendChild(opt);
 		};
 	}
@@ -161,3 +179,31 @@ var Util = Util || {
 
 }
 };
+
+$('.button-collapse').sideNav({
+	menuWidth: 200,
+	closeOnClick: true
+}
+);
+function cli() 
+{
+	var pagina="clients.html"
+	location.href=pagina
+} 
+
+function cha() 
+{
+	var pagina="chambas.html"
+	location.href=pagina
+} 
+
+function invo() 
+{
+	var pagina="invoices.html"
+	location.href=pagina
+} 
+function use() 
+{
+	var pagina="user.html"
+	location.href=pagina
+} 

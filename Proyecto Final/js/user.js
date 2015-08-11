@@ -148,8 +148,23 @@ fila: function(x){
 },
 getfila: function()	{
 	var selectBox = document.getElementById("select");
-	var x = selectBox.options[selectBox.selectedIndex].value;
-	localStorage.setItem('fila', x);
+	var i = selectBox.options[selectBox.selectedIndex].value;
+	localStorage.setItem('fila', i);
+	var object2 = JSON.parse(localStorage.getItem('User'));
+	var tbl = document.getElementById('table');
+	if(tbl.rows.length==2)
+	{
+		document.getElementById("table").deleteRow(1);
+	}
+	var row = tbl.insertRow(1);
+	var full = row.insertCell(0);
+	var username = row.insertCell(1);
+	var pasword = row.insertCell(2);
+	var actions = row.insertCell(3);
+	full.innerHTML = object2.User[i].fullname;
+	username.innerHTML = object2.User[i].username;
+	pasword.innerHTML= object2.User[i].pasword;			
+	actions.innerHTML="<a href='edit_user.html'><img  id='editar' src='edit.png'/> </a> <a href='delete_user.html'><img  src='delete.png'/> </a>";
 },
 llenarUpdate: function()
 {
@@ -170,3 +185,25 @@ llenarUpdate: function()
 	}
 }
 };
+$('.button-collapse').sideNav({
+	menuWidth: 200,
+	closeOnClick: true
+}
+);
+function cli() 
+{
+	var pagina="clients.html"
+	location.href=pagina
+} 
+
+function cha() 
+{
+	var pagina="chambas.html"
+	location.href=pagina
+} 
+
+function invo() 
+{
+	var pagina="invoices.html"
+	location.href=pagina
+} 

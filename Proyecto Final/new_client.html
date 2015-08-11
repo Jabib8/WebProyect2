@@ -11,19 +11,26 @@
  <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
 </head> 
 <body onload="Util.usuarioline();"> 
-  <nav>
-   <div class="nav-wrapper">
-     <!--<a href="dashboard.html" class="brand-logo center">Home</a>-->
-     <ul id="nav-mobile" class="left hide-down">
-      <li><a href="clients.html">Client</a></li>
-      <li><a href="chambas.html">Chambas</a></li> 
-      <li><a href="invoices.html">Invoices</a></li>
-      <li id="user_v"><a href="user.html">User</a></li> 
-      <li id="userline"><a>User</a></li> 
-      <li><a onclick="Util.cerrarsecion();" href="login.html"><i class="material-icons">person_pin</i></a></li>
-    </ul>
-  </div>
-</nav>
+ <script type="text/javascript" src="js/materialize2.min.js"></script>
+ <div id="menu">
+  <ul id="slide-out" class="side-nav full">
+    <li><a onclick="cli()">Clients</a></li>
+    <li><a onclick="cha()">Chambas</a></li>
+    <li><a onclick="invo()">Invoices</a></li>
+    <li id="user_v"><a onclick="use()">User</a></li>
+  </ul>
+
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="dashboard.html">Home</a></li>
+    <li><a  onclick="Util.cerrarsecion();" href="login.html">Log out</a></li>
+
+  </ul>
+  <a href="#" data-activates="slide-out" class="button-collapse"><i class=" material-icons">view_list</i></a>
+
+  <ul id="nav-mobile" class="right ">
+   <li><a id="userline" class="dropdown-button" href="#!" data-activates="dropdown1">como tal <i class="large material-icons right">arrow_drop_down</i></a></li> 
+ </ul>
+</div>
 <div class="divSubtitulo">
 
   <img class="divimg" src="images\user.png" /> 
@@ -35,29 +42,29 @@
 </button></a>
 </div>
 
-<fieldset class="flow-text" style=" margin-left: 20%;margin-right: 20%; border: none;">
+<fieldset class="flow-text" style=" margin-left: 5%;margin-right: 5%; border: none;">
   <div class="row">
     <form class="col s12">
-      <div class="row center-align">
-        <div class="input-field col s12">
+      <div class="container">
+        <div class="input-field col s11">
           <input  id="first_name_client" type="text" class="validate">
           <label for="first_name">First Name</label>
         </div>
       </div>
-      <div class="row center-align">
-        <div class="input-field col s12">
+      <div class="container">
+        <div class="input-field col s11">
           <input  id="last_name_client" type="text" class="validate">
           <label for="first_name">Last Name</label>
         </div>
       </div>
-      <div class="row center-align">
-        <div class="input-field col s12">
+      <div class="center container">
+        <div class="input-field col s8">
           <input  id="id_client" type="text" class="validate">
           <label for="first_name">ID</label>
         </div>
       </div>
-      <div class="row center-align">
-        <div class="input-field col s12">
+      <div class="container">
+        <div class="input-field col s8">
           <input  id="phone_client" type="text" class="validate">
           <label for="first_name">Telephone</label>
         </div>
@@ -66,9 +73,11 @@
 
     </form>
   </div>
-
+  <div class="row">   
   <a class="divguardar" href="client_administration.html" >Cancel</a>
   <a style="margin-left: 20%;" class="waves-effect waves-light btn" onclick="Util.agregarClient();" href="clients.html">SAVE</a>
+ </div>
+
 </fieldset>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

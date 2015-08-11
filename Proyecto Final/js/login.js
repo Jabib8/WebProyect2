@@ -1,6 +1,6 @@
 var Login = Login || {
 	validar: function(x){
-		if(document.getElementById('user').value=='admin' && document.getElementById('password').value=='$uper4dmin')
+		if(document.getElementById('user').value=='admin' && document.getElementById('password').value=='1')
 		{
 			localStorage.setItem('UserInline', 'Administrador');
 			window.location = ("dashboard.html"); 
@@ -19,6 +19,10 @@ var Login = Login || {
 			}
 		};
 		Materialize.toast('Contraseña Invalida!', 4500, 'rounded');
+	},
+	cerrarsecion: function()
+	{
+		localStorage.setItem('UserInline', '');
 	},
 	usuarioline: function()
 	{
@@ -41,3 +45,30 @@ var Login = Login || {
 		}
 	}
 };
+ $('.button-collapse').sideNav({
+      menuWidth: 200,
+      closeOnClick: true
+    }
+  );
+function cli() 
+{
+	var pagina="clients.html"
+location.href=pagina
+} 
+
+function cha() 
+{
+	var pagina="chambas.html"
+location.href=pagina
+} 
+
+function invo() 
+{
+	var pagina="invoices.html"
+location.href=pagina
+} 
+function use() 
+{
+	var pagina="user.html"
+	location.href=pagina
+} 

@@ -4,33 +4,40 @@
  <title>Clients</title>
  <!-- External CSS -->
  <meta charset="utf-8">
+ 
+ <meta name="viewport" content="width=device-width, initial-scale=1"/>
  <link rel="stylesheet" href="./template.css" type="text/css" media="all" />
  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+ <link type="text/css" rel="stylesheet" href="css/materialize2.min.css"  media="screen,projection"/>
  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+ <script src="js/login.js" type="text/javascript"></script>
  <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
 </head> 
 
 <body onload="Util.llenartabla()"> 
-  <ul id="dropdown1" class="dropdown-content">
-    <li class="active"><a href="clients.html">Clients</a></li>
-    <li><a href="chambas.html">Chambas</a></li>
-    <li><a href="invoices.html">Invoices</a></li>
-    <li id="user_v"><a href="user.html">User</a></li> 
+ <script type="text/javascript" src="js/materialize2.min.js"></script>
+ <div id="menu">
+  <ul id="slide-out" class="side-nav full">
+    <li><a onclick="cli()">Clients</a></li>
+    <li><a onclick="cha()">Chambas</a></li>
+    <li><a onclick="invo()">Invoices</a></li>
+    <li id="user_v"><a onclick="use()">User</a></li>
   </ul>
-  <nav>
-   <div class="nav-wrapper">
-     <!--<a href="dashboard.html" class="brand-logo center">Home</a>-->
-     <a href="dashboard.html" class="brand-logo center">HOME</a>
-     <ul id="nav-mobile" class="left hide-down">
-       <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Menu<i class="material-icons right">arrow_drop_down</i></a></li>      
-       <li id="userline"><a>User</a></li> 
-       <li id="userline"><i class="material-icons">person_pin</i></li>
-       <li><a onclick="Util.cerrarsecion();" href="login.html"><i class="material-icons">power_settings_new</i></a></li>
-     </ul>
-   </div>
- </nav>
- <div class="divSubtitulo" >
+
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="dashboard.html">Home</a></li>
+    <li><a  onclick="Util.cerrarsecion();" href="login.html">Log out</a></li>
+
+  </ul>
+  <a href="#" data-activates="slide-out" class="button-collapse"><i class=" material-icons">view_list</i></a>
+
+  <ul id="nav-mobile" class="right ">
+   <li><a id="userline" class="dropdown-button" href="#!" data-activates="dropdown1"><i class="large material-icons right">arrow_drop_down</i></a></li> 
+ </ul>
+</div>
+
+
+<div class="divSubtitulo" >
   <img class="divimg" src="images\user.png" /> 
   <span class="subtitulo flow-text">
    CLIENTS
@@ -38,9 +45,18 @@
  <a href="new_client.html"><button  class="divbtn waves-effect waves-light btn">
   NEW CLIENT
 </button></a>
-    <select class="browser-default" id="select" onchange="Util.getfila();" >
-      <option value="" disabled selected>Select client</option>
-    </select>
+<div class="row">
+<div class="col s6"><select class="browser-default" id="select" onchange="Util.getfila();" ><option value="" disabled selected>Select client</option>
+</select></div>
+<div class="col s6">
+<h6 id="id"></h6>
+<h6 id="full"></h6>
+<h6 id="phone"></h6>
+<h6 id="action"></h6>
+</div>  
+</div>
+</div>
+
 <table id="tableclient"  class="centered hoverable striped bordered"  >
   <tr style="background-color: #FF8C00">
     <td ><strong>ID</strong></td>
@@ -49,9 +65,10 @@
     <td ><strong >ACTIONS</strong></td>
   </tr>
 </table>
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
-<script src="js/application.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/application.js"></script>
 </body> 
 <footer></footer> 
 </html> 
