@@ -1,6 +1,6 @@
 var Login = Login || {
 	validar: function(x){
-		if(document.getElementById('user').value=='admin' && document.getElementById('password').value=='1')
+		if(document.getElementById('user').value=='admin' && document.getElementById('password').value=='$uper4dmin')
 		{
 			localStorage.setItem('UserInline', 'Administrador');
 			window.location = ("dashboard.html"); 
@@ -39,6 +39,10 @@ var Login = Login || {
 			objetoH.innerHTML = 'Welcome '+localStorage.getItem('UserInline');
 			if(localStorage.getItem('UserInline')!='Administrador')
 			{
+				//
+				var img = document.getElementById("imguser");
+				img.style.display = 'none';	
+				document.getElementById("imgclient").style.marginLeft = "12%";
 				var elemento = document.getElementById("user_v");
 				elemento.style.display = 'none';	
 			}	

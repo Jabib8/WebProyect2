@@ -13,7 +13,7 @@ var Invoice = Invoice || {
 		{
 			o=JSON.parse(localStorage.getItem('inv'));
 		}
-		//este mae agrega otro nuevo elemento		
+		//este agrega otro nuevo elemento		
 		o ['Invoices'].push({"id":'1',"client":document.getElementById('client_invoice').value,"descript":document.getElementById('description_invoice').value,"mount":document.getElementById('mount_invoice').value});
 		//lo convierte a objeto text
 		tex = JSON.stringify (o);
@@ -97,7 +97,7 @@ var Invoice = Invoice || {
 
 		var i = parseInt(localStorage.getItem('fila'));	 
 		var object2 = JSON.parse(localStorage.getItem('inv'));               
-		object2.Invoices[i].client=document.getElementById('first_name').value;
+		object2.Invoices[i].client=document.getElementById('client_invoice').value;
 		object2.Invoices[i].descript=document.getElementById('description_invoice').value;
 		object2.Invoices[i].mount=document.getElementById('mount_invoice').value;
 		localStorage.setItem('inv', JSON.stringify(object2));  
@@ -112,22 +112,13 @@ var Invoice = Invoice || {
 		localStorage.setItem('fila', i);
 		var objetoSPAN = document.getElementById("userline");
 		var object2 = JSON.parse(localStorage.getItem('inv'));
-		var tbl = document.getElementById('table');
-		if(tbl.rows.length==2)
-		{
-			document.getElementById("table").deleteRow(1);
-		}
-		var row = tbl.insertRow(1);
-		var id = row.insertCell(0);
-		var client = row.insertCell(1);
-		var description = row.insertCell(2);
-		var mount = row.insertCell(3);
-		var actions = row.insertCell(4);
-		id.innerHTML = i;
-		client.innerHTML = object2.Invoices[i].client;
-		description.innerHTML= object2.Invoices[i].descript;
-		mount.innerHTML= object2.Invoices[i].mount;
-		actions.innerHTML="<a href='edit_invoice.html'><img  id='editar' src='edit.png'/> </a> <a href='delete_invoice.html'><img  src='delete.png'/> </a>";
+
+		var objetoSPAN = document.getElementById("id");
+		objetoSPAN.innerHTML ='Full name: ' +object2.Invoices[i].client
+		var objetoSPAN = document.getElementById("full");
+		objetoSPAN.innerHTML = 'Descript: '+object2.Invoices[i].descript;
+		var objetoSPAN = document.getElementById("phone");
+		objetoSPAN.innerHTML ='Mount: '+ object2.Invoices[i].mount;
 	},
 	llenarUpdate: function()
 	{
@@ -147,9 +138,19 @@ var Invoice = Invoice || {
 			objetoSPAN.innerHTML = localStorage.getItem('UserInline');
 			var i = parseInt(localStorage.getItem('fila'));
 			var object2 = JSON.parse(localStorage.getItem('inv'));		
-			document.getElementById('first_name').value=object2.Invoices[i].client;
+			document.getElementById('client_invoice').value=object2.Invoices[i].client;
 			document.getElementById('description_invoice').value=object2.Invoices[i].descript;
 			document.getElementById('mount_invoice').value=object2.Invoices[i].mount;
+			objetoSPAN.innerHTML = localStorage.getItem('UserInline');
+			if (localStorage.getItem('Client')!=null || localStorage.getItem('Client')!="") 
+			{    
+				var object2 = JSON.parse(localStorage.getItem('Client'));
+				var options = '';
+				for (var i = 0; i < object2.clients.length; i++) {
+					options += '<option value="'+object2.clients[i].firstName+' '+object2.clients[i].lastName+'" />';
+					document.getElementById('clientes').innerHTML = options;
+				};
+			}  
 			
 
 		}

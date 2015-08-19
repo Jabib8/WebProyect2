@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE HTML> 
 <html lang="es"> 
 <head>
@@ -38,24 +41,33 @@
 
 
 <div class="divSubtitulo" >
-  <img class="divimg" src="images\user.png" /> 
+  <img class="divimg" src="images\client.png" /> 
   <span class="subtitulo flow-text">
    CLIENTS
  </span>
  <a href="new_client.html"><button  class="divbtn waves-effect waves-light btn">
   NEW CLIENT
 </button></a>
+
 <div class="row">
-<div class="col s6"><select class="browser-default" id="select" onchange="Util.getfila();" ><option value="" disabled selected>Select client</option>
-</select></div>
-<div class="col s6">
-<h6 id="id"></h6>
-<h6 id="full"></h6>
-<h6 id="phone"></h6>
-<h6 id="action"></h6>
-</div>  
+  <div class="col s12"><select class="browser-default" id="select" onchange="Util.getfila();" ><option value="" disabled selected>Select client</option>
+  </select></div>
+  <div class="center-align" >
+    <h5 id="id" style="padding-top:15%"></h5>
+    <h5 id="full"></h5>
+    <h5 id="phone"></h5>
+    <h5 id="action"></h5>
+    </div> 
 </div>
-</div>
+<div style="margin-top:2%" class="row">
+ <div class="col s6">
+      <a id="btn" style="margin-left: 63%;" href="edit_client.html" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">edit</i></a>
+    </div>
+    <div class="col s6"  >
+      <a id="btn" style="margin-left: 10%;" href="delete_client.html" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></a>
+    </div>
+   
+  </div>
 
 <table id="tableclient"  class="centered hoverable striped bordered"  >
   <tr style="background-color: #FF8C00">

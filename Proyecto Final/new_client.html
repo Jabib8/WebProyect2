@@ -3,12 +3,12 @@
 <head>
  <title>new_client</title>
  <!-- External CSS -->
- <link rel="stylesheet" href="./template.css" type="text/css" media="all" />
+ 
  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+ <link rel="stylesheet" href="./template.css" type="text/css" media="all" />
  <meta charset="utf-8">
- <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+ 
 </head> 
 <body onload="Util.usuarioline();"> 
  <script type="text/javascript" src="js/materialize2.min.js"></script>
@@ -28,12 +28,12 @@
   <a href="#" data-activates="slide-out" class="button-collapse"><i class=" material-icons">view_list</i></a>
 
   <ul id="nav-mobile" class="right ">
-   <li><a id="userline" class="dropdown-button" href="#!" data-activates="dropdown1">como tal <i class="large material-icons right">arrow_drop_down</i></a></li> 
+   <li><a id="userline" class="dropdown-button" href="#!" data-activates="dropdown1"><i class="large material-icons right">arrow_drop_down</i></a></li> 
  </ul>
 </div>
 <div class="divSubtitulo">
 
-  <img class="divimg" src="images\user.png" /> 
+  <img class="divimg" src="images\client.png" /> 
   <span class="subtitulo flow-text">
    CLIENTS
  </span>
@@ -47,26 +47,26 @@
     <form class="col s12">
       <div class="container">
         <div class="input-field col s11">
-          <input  id="first_name_client" type="text" class="validate">
-          <label for="first_name">First Name</label>
+          <input type="text" id="first_name_client" class="input validate" style="font-size:18pt;">
+          <label for="first_name" style="font-size:18pt;">First Name</label>
         </div>
       </div>
       <div class="container">
         <div class="input-field col s11">
-          <input  id="last_name_client" type="text" class="validate">
-          <label for="first_name">Last Name</label>
+          <input  id="last_name_client" type="text" class="input validate" style="font-size:18pt;">
+          <label for="first_name" style="font-size:18pt;">Last Name</label>
         </div>
       </div>
       <div class="center container">
         <div class="input-field col s8">
-          <input  id="id_client" type="text" class="validate">
-          <label for="first_name">ID</label>
+          <input  id="id_client" type="text" class="validate" style="font-size:18pt;">
+          <label for="first_name" style="font-size:18pt;">ID</label>
         </div>
       </div>
       <div class="container">
         <div class="input-field col s8">
-          <input  id="phone_client" type="text" class="validate">
-          <label for="first_name">Telephone</label>
+          <input  id="phone_client" type="text" class="validate" style="font-size:18pt;">
+          <label for="first_name" style="font-size:18pt;">Telephone</label>
         </div>
       </div>
 
@@ -74,9 +74,9 @@
     </form>
   </div>
   <div class="row">   
-  <a class="divguardar" href="client_administration.html" >Cancel</a>
-  <a style="margin-left: 20%;" class="waves-effect waves-light btn" onclick="Util.agregarClient();" href="clients.html">SAVE</a>
- </div>
+    <a class="divguardar" href="clients.html" >Cancel</a>
+    <a style="margin-left: 20%;" class="waves-effect waves-light btn" onclick="Util.agregarClient();" href="clients.html">SAVE</a>
+  </div>
 
 </fieldset>
 

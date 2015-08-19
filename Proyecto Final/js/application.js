@@ -101,17 +101,13 @@ var Util = Util || {
 		var x = selectBox.options[selectBox.selectedIndex].value;
 		localStorage.setItem('fila', x);
 		var object2 = JSON.parse(localStorage.getItem('Client'));
-		var objetoSPAN = document.getElementById("id");
-			objetoSPAN.innerHTML = object2.clients[x].id;
+		    var objetoSPAN = document.getElementById("id");
+			objetoSPAN.innerHTML ='ID: ' +object2.clients[x].id;
 			var objetoSPAN = document.getElementById("full");
-			objetoSPAN.innerHTML = object2.clients[x].firstName+" "+object2.clients[x].lastName;
+			objetoSPAN.innerHTML = 'Full name: '+object2.clients[x].firstName+" "+object2.clients[x].lastName;
 			var objetoSPAN = document.getElementById("phone");
-			objetoSPAN.innerHTML = object2.clients[x].phone;
-			var objetoSPAN = document.getElementById("action");
-			objetoSPAN.innerHTML = "<a  href='edit_client.html'><img  id='editar' src='edit.png'/> </a> <a  href='delete_client.html'><img  src='delete.png'/> </a>";
-
-		
-		
+			objetoSPAN.innerHTML ='Phone: '+ object2.clients[x].phone;
+			
 	},
 	llenarUpdate: function()
 	{

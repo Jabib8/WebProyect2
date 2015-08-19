@@ -95,27 +95,17 @@ var Chamba = Chamba || {
 		var i = selectBox.options[selectBox.selectedIndex].value;
 		localStorage.setItem('fila', i);
 		var object2 = JSON.parse(localStorage.getItem('ch'));
-		var tbl = document.getElementById('table');
-		if(tbl.rows.length==2)
-		{
-			document.getElementById("table").deleteRow(1);
-		}
-		var tbl = document.getElementById('table');
-			var row = tbl.insertRow(1);
-			var id = row.insertCell(0);
-			var full = row.insertCell(1);
-			var description = row.insertCell(2);
-			var date = row.insertCell(3);
-			var notes = row.insertCell(4);
-			var actions = row.insertCell(5);
-			id.innerHTML = object2.Chambas[i].id;
-			full.innerHTML = object2.Chambas[i].client;
-			description.innerHTML= object2.Chambas[i].descript;
-			date.innerHTML= object2.Chambas[i].date;
-			notes.innerHTML= object2.Chambas[i].notes;
-		actions.innerHTML="<a href='edit_chamba.html'><img  id='editar' src='edit.png'/> </a> <a href='delete_chambas.html'><img  src='delete.png'/> </a>";
-		var elemento = document.getElementById("table");
-		elemento.style.display = 'block';
+
+		var objetoSPAN = document.getElementById("numInv");
+		objetoSPAN.innerHTML ='ID: ' +object2.Chambas[i].id;
+		var objetoSPAN = document.getElementById("id");
+		objetoSPAN.innerHTML ='Name: ' +object2.Chambas[i].client;
+		var objetoSPAN = document.getElementById("full");
+		objetoSPAN.innerHTML = 'Descript: '+object2.Chambas[i].descript;
+		var objetoSPAN = document.getElementById("phone");
+		objetoSPAN.innerHTML ='Date: '+ object2.Chambas[i].date;
+		var objetoSPAN = document.getElementById("note");
+		objetoSPAN.innerHTML ='Note: '+ object2.Chambas[i].notes;
 	},
 	llenarUpdate: function()
 	{
@@ -178,7 +168,7 @@ var Chamba = Chamba || {
 			//llenar select
 			var opt = document.createElement('option');
 			opt.value = i;
-			opt.innerHTML =" ID: "+object2.Chambas[i].id +' Name: '+object2.Chambas[i].client+" Descript: "+object2.Chambas[i].descript +'\n'+" Date: "+object2.Chambas[i].date+" Note: "+object2.Chambas[i].notes;
+			opt.innerHTML = object2.Chambas[i].id +'    '+object2.Chambas[i].client;
 			select.appendChild(opt);
 		};
 	}

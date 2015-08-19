@@ -44,6 +44,21 @@
 <select class="browser-default" id="select" onchange="Usuario.getfila();" >
   <option value="" disabled selected>Select user</option>
 </select>
+ <div class="center-align" >
+    <h5 id="id" style="padding-top:15%"></h5>
+    <h5 id="full"></h5>
+    <h5 id="phone"></h5>
+    <h5 id="action"></h5>
+    </div> 
+    <div style="margin-top:2%" class="row">
+      <div class="col s6 center">
+      <a id="btn" href="edit_user.html" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">edit</i></a>
+    </div>
+    <div class="col s6 center"  >
+      <a id="btn"  href="delete_user.html" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></a>
+    </div>  
+  </div>
+
 <table  class="centered hoverable striped bordered" id="table_user">
   <tr style="background-color: #FF8C00" >
     <td ><strong>FULL NAME</strong></td>
@@ -59,14 +74,7 @@
     </td>
   </tr>
 </table>
-<table id="table"  class="centered hoverable striped bordered responsive-table"  >
-  <tr style="background-color: #FF8C00">
-     <td ><strong>FULL NAME</strong></td>
-    <td ><strong>USER NAME</strong></td>
-    <td ><strong >PASSWORD</strong></td>
-    <td ><strong >ACTIONS</strong></td>
-  </tr>
-</table >
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <script src="js/user.js" type="text/javascript"></script>

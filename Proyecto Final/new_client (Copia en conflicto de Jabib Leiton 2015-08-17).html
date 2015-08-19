@@ -1,18 +1,16 @@
-﻿<!DOCTYPE HTML> 
+<!DOCTYPE HTML> 
 <html lang="es"> 
 <head>
- <title>Edit Client</title>
+ <title>new_client</title>
  <!-- External CSS -->
- <link rel="stylesheet" href="./template.css" type="text/css" media="all" />
+ 
  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+ <link rel="stylesheet" href="./template.css" type="text/css" media="all" />
  <meta charset="utf-8">
- <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
-
-
+ 
 </head> 
-<body onload="Util.llenarUpdate()"> 
+<body onload="Util.usuarioline();"> 
  <script type="text/javascript" src="js/materialize2.min.js"></script>
  <div id="menu">
   <ul id="slide-out" class="side-nav full">
@@ -33,52 +31,55 @@
    <li><a id="userline" class="dropdown-button" href="#!" data-activates="dropdown1"><i class="large material-icons right">arrow_drop_down</i></a></li> 
  </ul>
 </div>
-  <div class="divSubtitulo">
+<div class="divSubtitulo">
 
-    <img class="divimg" src="images\client.png" /> 
-    <span class="subtitulo flow-text">
-     EDIT CLIENT
-   </span>
-   <a href="new_client.html"><button  class="divbtn waves-effect waves-light btn">
-    NEW CLIENT
-  </button></a>
+  <img class="divimg" src="images\user.png" /> 
+  <span class="subtitulo flow-text">
+   CLIENTS
+ </span>
+ <a href="new_client.html"><button  class="divbtn waves-effect waves-light btn">
+  NEW CLIENT
+</button></a>
 </div>
 
 <fieldset class="flow-text" style=" margin-left: 5%;margin-right: 5%; border: none;">
   <div class="row">
-    <form class="col s12" id="frmEditCli">
+    <form class="col s12" id="frmNCli>
       <div class="container">
-        <div class="input col s10">
-        <label style="font-size:18pt;"  for="first_name">First Name</label>
-          <input style="font-size:18pt;"  id="first_name" type="text" class="validate">          
+        <div class="input-field col s11">
+          <input  id="first_name_client" type="text" class="first_name_client">
+          <label for="first_name">First Name</label>
         </div>
       </div>
       <div class="container">
-        <div class="input col s10">
-        <label style="font-size:18pt;" for="last_name">Last Name</label>
-          <input style="font-size:18pt;" id="last_name" type="text" class="validate">          
+        <div class="input-field col s11">
+          <input  id="last_name_client" type="text" class="input validate" style="font-size:20pt;">
+          <label for="first_name" style="font-size:20pt;">Last Name</label>
+        </div>
+      </div>
+      <div class="center container">
+        <div class="input-field col s8">
+          <input  id="id_client" type="text" class="validate">
+          <label for="first_name">ID</label>
         </div>
       </div>
       <div class="container">
-        <div class="input col s8">
-        <label style="font-size:18pt;" for="id_client">ID</label>
-          <input style="font-size:18pt;" id="id_client" type="text" class="validate">          
-        </div>
-      </div>
-      <div class="container">
-        <div class="input col s8">
-        <label style="font-size:18pt;" for="phone_client">Telephone</label>
-          <input style="font-size:18pt;"  id="phone_client" type="text" class="validate">          
+        <div class="input-field col s8">
+          <input  id="phone_client" type="text" class="validate">
+          <label for="first_name">Telephone</label>
         </div>
       </div>
 
 
     </form>
   </div>
+  <div class="row">   
+    <a class="divguardar" href="client_administration.html" >Cancel</a>
+    <a style="margin-left: 20%;" class="waves-effect waves-light btn" onclick="Util.agregarClient();" href="clients.html">SAVE</a>
+  </div>
 
-  <a class="divguardar" href="client_administration.html">Cancel</a>
-  <a style="margin-left: 20%;" class="waves-effect waves-light btn" onclick="Util.updateInvoice();" href="clients.html">SAVE</a>
-  </fieldset>
+</fieldset>
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <script src="js/application.js" type="text/javascript"></script>
